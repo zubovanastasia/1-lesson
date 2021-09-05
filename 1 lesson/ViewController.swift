@@ -1,10 +1,3 @@
-//
-//  ViewController.swift
-//  1 урок
-//
-//  Created by Anastasiia Zubova on 03.09.2021.
-//
-
 import UIKit
 
 
