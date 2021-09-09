@@ -45,22 +45,44 @@ class ViewController: UIViewController {
     }
     
     @objc private func handleKeyboardWillShow () {
-        self.ScrollView.contentInset.bottom += 150
+        self.ScrollView.contentInset.bottom += 110
     }
     @objc private func handleKeyboardWillHide () {
         self.ScrollView.contentInset.bottom = 0
     }
 
-    
-    @IBAction private func Button(_ sender: Any) {
+    private func ChekPass () {
     let login = self.LoginText.text
         let pass = self.PassText.text
-        
+            
         if login == "admin" && pass == "123456" {
-            print ("Успешная авторизация")
+            self.showAdmin()
         } else {
-            print("Не авторизованы")
+            self.showAlert()
         }
+
+    }
+    private func showAdmin () {
+        let storyboard = UIStoryboard(name: "TabBar", bundle: nil)
+        let viewController = storyboard.instantiateInitialViewController()
+        if let viewController = viewController as? TabBarViewController {
+            self.present(viewController, animated: true)
+        }
+    }
+    
+    private func showAlert () {
+        let alertController = UIAlertController(title: "Ошибка",
+                                                message: "Введены неверные данные пользователя",
+                                                preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default)
+        
+        alertController.addAction(action)
+        
+    self.present(alertController, animated: true)
+    }
+    
+    @IBAction private func Button(_ sender: Any) {
+        self.ChekPass()
     }
     
 }
