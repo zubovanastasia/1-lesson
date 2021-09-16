@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19150" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Erd-GN-LH0">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19134"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Friends Controller-->
+        <scene sceneID="glc-X7-JvV">
+            <objects>
+                <tableViewController id="Erd-GN-LH0" customClass="FriendsController" customModule="__lesson" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="TableViewFriends" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="7Im-kD-SXU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="sectionIndexTrackingBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="friend" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="friend" rowHeight="45" id="VV3-Zr-YyH" customClass="FriendsCell" customModule="__lesson" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="49.5" width="414" height="45"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VV3-Zr-YyH" id="xRY-9s-u6e">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="45"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="nameLabel" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" showsExpansionTextWhenTruncated="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Odk-N7-Xfz">
+                                            <rect key="frame" x="100" y="11.5" width="274" height="23"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                            <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </label>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZTL-wp-kfN">
+                                            <rect key="frame" x="15" y="5" width="35" height="35"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="35" id="KOD-rD-Mf0"/>
+                                                <constraint firstAttribute="height" constant="35" id="dfr-bB-4ba"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="ZTL-wp-kfN" secondAttribute="bottom" constant="5" id="4lv-7F-W2i"/>
+                                        <constraint firstItem="ZTL-wp-kfN" firstAttribute="top" secondItem="xRY-9s-u6e" secondAttribute="top" constant="5" id="C9y-hR-OI1"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Odk-N7-Xfz" secondAttribute="trailing" constant="20" id="NuN-Sz-Epw"/>
+                                        <constraint firstItem="Odk-N7-Xfz" firstAttribute="leading" secondItem="xRY-9s-u6e" secondAttribute="leading" constant="100" id="Vl5-W1-hk8"/>
+                                        <constraint firstItem="Odk-N7-Xfz" firstAttribute="bottom" secondItem="xRY-9s-u6e" secondAttribute="bottomMargin" constant="0.5" id="YBC-LQ-AaY"/>
+                                        <constraint firstItem="Odk-N7-Xfz" firstAttribute="top" secondItem="xRY-9s-u6e" secondAttribute="topMargin" constant="0.5" id="eSP-4a-WPU"/>
+                                        <constraint firstItem="ZTL-wp-kfN" firstAttribute="leading" secondItem="xRY-9s-u6e" secondAttribute="leading" constant="15" id="utA-NJ-DBN"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="imageAva" destination="ZTL-wp-kfN" id="2Th-TW-m12"/>
+                                    <outlet property="nameLabel" destination="Odk-N7-Xfz" id="sG9-xm-V9I"/>
+                                    <segue destination="xnE-7y-iHt" kind="show" id="Pag-LF-Hvf"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fop-l2-baH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-304.34782608695656" y="45.535714285714285"/>
+        </scene>
+        <!--PhotoCollection-->
+        <scene sceneID="X52-kV-PbN">
+            <objects>
+                <viewControllerPlaceholder storyboardName="PhotoCollection" id="xnE-7y-iHt" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" title="Фотографии" largeTitleDisplayMode="always" id="tSg-a7-nHm">
+                        <barButtonItem key="backBarButtonItem" title="Друзья" id="oOf-TJ-EJc"/>
+                    </navigationItem>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sTa-9G-7Gk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-305" y="402"/>
+        </scene>
+    </scenes>
+</document>

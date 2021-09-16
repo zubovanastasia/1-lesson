@@ -1,3 +1,10 @@
+//
+ //  SceneDelegate.swift
+ //  1 lesson
+ //
+ //  Created by Anastasiia Zubova on 05.09.2021.
+ //
+
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
