@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19134"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -32,26 +33,39 @@
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MVV-fo-ri6">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9du-LF-Lug">
                                             <rect key="frame" x="15" y="5" width="35" height="35"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MVV-fo-ri6">
+                                                    <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="35" id="jmo-Lq-E0w"/>
+                                                        <constraint firstAttribute="height" constant="35" id="w2c-T1-I0G"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="35" id="jmo-Lq-E0w"/>
-                                                <constraint firstAttribute="height" constant="35" id="w2c-T1-I0G"/>
+                                                <constraint firstItem="MVV-fo-ri6" firstAttribute="centerY" secondItem="9du-LF-Lug" secondAttribute="centerY" id="6gB-28-psG"/>
+                                                <constraint firstItem="MVV-fo-ri6" firstAttribute="centerX" secondItem="9du-LF-Lug" secondAttribute="centerX" id="K5u-m8-czN"/>
+                                                <constraint firstAttribute="height" constant="35" id="hSF-ft-u3s"/>
+                                                <constraint firstAttribute="width" constant="35" id="oX8-4C-Dbt"/>
                                             </constraints>
-                                        </imageView>
+                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="trailingMargin" secondItem="xYv-C4-YpY" secondAttribute="trailing" constant="51" id="3hR-SH-92v"/>
-                                        <constraint firstAttribute="bottom" secondItem="MVV-fo-ri6" secondAttribute="bottom" constant="5" id="Uxr-sp-h6z"/>
-                                        <constraint firstItem="MVV-fo-ri6" firstAttribute="leading" secondItem="gpB-0g-QpN" secondAttribute="leading" constant="15" id="X1t-gP-0mh"/>
+                                        <constraint firstItem="xYv-C4-YpY" firstAttribute="leading" secondItem="9du-LF-Lug" secondAttribute="trailing" constant="59" id="8NR-g7-fUZ"/>
+                                        <constraint firstItem="9du-LF-Lug" firstAttribute="leading" secondItem="gpB-0g-QpN" secondAttribute="leading" constant="15" id="FP8-BK-UVG"/>
                                         <constraint firstItem="xYv-C4-YpY" firstAttribute="top" secondItem="gpB-0g-QpN" secondAttribute="topMargin" id="YNJ-k8-X90"/>
+                                        <constraint firstAttribute="bottom" secondItem="9du-LF-Lug" secondAttribute="bottom" constant="5" id="asz-3P-9Xe"/>
                                         <constraint firstItem="xYv-C4-YpY" firstAttribute="leading" secondItem="gpB-0g-QpN" secondAttribute="leadingMargin" constant="89" id="fwm-0Q-3IX"/>
-                                        <constraint firstItem="MVV-fo-ri6" firstAttribute="top" secondItem="gpB-0g-QpN" secondAttribute="top" constant="5" id="hqp-k3-9H8"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="xYv-C4-YpY" secondAttribute="bottom" constant="0.5" id="ilw-f0-N82"/>
+                                        <constraint firstItem="9du-LF-Lug" firstAttribute="top" secondItem="gpB-0g-QpN" secondAttribute="top" constant="5" id="lcY-66-LuW"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -59,6 +73,7 @@
                                 <connections>
                                     <outlet property="imageCommunity" destination="MVV-fo-ri6" id="PCa-i6-6fY"/>
                                     <outlet property="nameCommunity" destination="xYv-C4-YpY" id="nhn-Ct-w41"/>
+                                    <outlet property="viewComShadow" destination="9du-LF-Lug" id="vhc-9w-1MN"/>
                                     <segue destination="1sN-6m-cKl" kind="show" id="kZl-8k-RXF"/>
                                 </connections>
                             </tableViewCell>
@@ -86,4 +101,9 @@
             <point key="canvasLocation" x="-41" y="524"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

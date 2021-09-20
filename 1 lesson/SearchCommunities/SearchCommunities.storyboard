@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19134"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,39 +18,54 @@
                         <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchCom" id="ACF-Dn-KMG" customClass="SearchCommunitiesCell" customModule="__lesson" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44.5" width="414" height="45.5"/>
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ACF-Dn-KMG" id="okM-vI-cVi">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="45.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="756-N2-gmz">
-                                            <rect key="frame" x="15" y="5" width="35" height="35.5"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="35" id="1nH-dv-bya"/>
-                                                <constraint firstAttribute="width" constant="35" id="GN9-ch-unn"/>
-                                            </constraints>
-                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FqD-O7-P7A">
-                                            <rect key="frame" x="92" y="9" width="254" height="28.5"/>
+                                            <rect key="frame" x="110" y="9" width="236" height="26.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tgI-Jy-gau">
+                                            <rect key="frame" x="15" y="5" width="35" height="33.5"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="756-N2-gmz">
+                                                    <rect key="frame" x="0.0" y="-1" width="35" height="35.5"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="35" id="1nH-dv-bya"/>
+                                                        <constraint firstAttribute="width" constant="35" id="GN9-ch-unn"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <constraints>
+                                                <constraint firstItem="756-N2-gmz" firstAttribute="centerY" secondItem="tgI-Jy-gau" secondAttribute="centerY" id="E23-Wo-Nle"/>
+                                                <constraint firstAttribute="width" constant="35" id="PWk-By-STT"/>
+                                                <constraint firstAttribute="height" constant="33" id="e0E-4m-juh"/>
+                                                <constraint firstItem="756-N2-gmz" firstAttribute="top" secondItem="tgI-Jy-gau" secondAttribute="top" constant="-1" id="kfH-po-Niy"/>
+                                                <constraint firstItem="756-N2-gmz" firstAttribute="centerX" secondItem="tgI-Jy-gau" secondAttribute="centerX" id="xjE-5C-pHg"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="FqD-O7-P7A" secondAttribute="trailing" constant="68" id="MBE-nr-rC3"/>
-                                        <constraint firstItem="FqD-O7-P7A" firstAttribute="leading" secondItem="756-N2-gmz" secondAttribute="trailing" constant="42" id="QPe-12-NJf"/>
-                                        <constraint firstAttribute="bottom" secondItem="756-N2-gmz" secondAttribute="bottom" constant="5" id="SSB-zf-Dht"/>
-                                        <constraint firstItem="756-N2-gmz" firstAttribute="top" secondItem="okM-vI-cVi" secondAttribute="top" constant="5" id="TEf-zd-9TJ"/>
-                                        <constraint firstItem="FqD-O7-P7A" firstAttribute="leading" secondItem="756-N2-gmz" secondAttribute="trailing" constant="42" id="Up5-Mh-6lE"/>
-                                        <constraint firstItem="756-N2-gmz" firstAttribute="leading" secondItem="okM-vI-cVi" secondAttribute="leading" constant="15" id="VO7-u3-Urt"/>
+                                        <constraint firstItem="tgI-Jy-gau" firstAttribute="leading" secondItem="okM-vI-cVi" secondAttribute="leadingMargin" constant="-5" id="fDg-fp-alQ"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="FqD-O7-P7A" secondAttribute="trailing" constant="48" id="mum-FO-nyL"/>
+                                        <constraint firstItem="tgI-Jy-gau" firstAttribute="top" secondItem="okM-vI-cVi" secondAttribute="top" constant="5" id="qCp-hE-aFj"/>
                                         <constraint firstItem="FqD-O7-P7A" firstAttribute="top" secondItem="okM-vI-cVi" secondAttribute="topMargin" constant="-2" id="qVb-9r-ZFW"/>
                                         <constraint firstAttribute="bottom" secondItem="FqD-O7-P7A" secondAttribute="bottom" constant="8" id="qbT-7K-NOQ"/>
+                                        <constraint firstItem="tgI-Jy-gau" firstAttribute="leading" secondItem="okM-vI-cVi" secondAttribute="leading" constant="15" id="rjp-We-1nB"/>
+                                        <constraint firstAttribute="bottom" secondItem="tgI-Jy-gau" secondAttribute="bottom" constant="5" id="sD0-5i-81L"/>
                                         <constraint firstItem="FqD-O7-P7A" firstAttribute="top" secondItem="okM-vI-cVi" secondAttribute="top" constant="9" id="sM0-pH-9el"/>
+                                        <constraint firstItem="FqD-O7-P7A" firstAttribute="leading" secondItem="tgI-Jy-gau" secondAttribute="trailing" constant="60" id="tSm-Xo-cGX"/>
+                                        <constraint firstAttribute="trailing" secondItem="tgI-Jy-gau" secondAttribute="trailing" constant="364" id="xt6-Iv-UyY"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -57,6 +73,7 @@
                                 <connections>
                                     <outlet property="imageSearchComm" destination="756-N2-gmz" id="BCp-6Z-aLb"/>
                                     <outlet property="nameCommunities" destination="FqD-O7-P7A" id="VlX-ru-708"/>
+                                    <outlet property="viewSearchShadow" destination="tgI-Jy-gau" id="2bS-6h-M7e"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -71,4 +88,9 @@
             <point key="canvasLocation" x="-207.24637681159422" y="114.50892857142857"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

@@ -57,6 +57,10 @@
                         <navigationBarAppearance key="standardAppearance" backgroundImageContentMode="scaleToFill">
                             <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="shadowColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <textAttributes key="titleTextAttributes">
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </textAttributes>
                             <barButtonItemAppearance key="buttonAppearance">
                                 <barButtonItemStateAppearance key="normal">
                                     <textAttributes key="titleTextAttributes">
@@ -104,7 +108,7 @@
         <scene sceneID="X2h-B9-stT">
             <objects>
                 <viewControllerPlaceholder storyboardName="Friends" id="aTX-1v-8YD" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" title="Друзья" largeTitleDisplayMode="always" id="pXK-m0-Xr0">
+                    <navigationItem key="navigationItem" title="Друзья" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="always" id="pXK-m0-Xr0">
                         <barButtonItem key="backBarButtonItem" title="Назад" id="gQY-1y-eny"/>
                     </navigationItem>
                 </viewControllerPlaceholder>

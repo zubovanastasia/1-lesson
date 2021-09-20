@@ -8,7 +8,7 @@
 import UIKit
 
 class FriendsController: UITableViewController {
-    
+
     var names = ["Антонов Петр","Бочкин Алексей","Воронин Дмитрий","Галочкина Мария","Новикова Ксения"]
     
     override func viewDidLoad() {
@@ -30,11 +30,9 @@ class FriendsController: UITableViewController {
         return cell
     }
     
-    //Не разобралась как сделать аватарку всем, получается только первому поставить
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! FriendsCell
-        cell.imageAva.image = UIImage(named: "168723")
+        cell.imageAva.image = UIImage(named: "168724")
+        
 }
-
 }

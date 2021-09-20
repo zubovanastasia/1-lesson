@@ -94,8 +94,8 @@
 				631AF27826EF9EA900938AFD /* FriendsCell.swift */,
 				631EE9DE26ECF2B5001B8C8D /* FriendsController.swift */,
 				631EE9DB26ECE45F001B8C8D /* Communities.storyboard */,
-				631EE9E026ECF2D1001B8C8D /* CommunitiesController.swift */,
 				631EE9E426ECFF92001B8C8D /* CommunitiesCell.swift */,
+				631EE9E026ECF2D1001B8C8D /* CommunitiesController.swift */,
 			);
 			path = TabsTable;
 			sourceTree = "<group>";
