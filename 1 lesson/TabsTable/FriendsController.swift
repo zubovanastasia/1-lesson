@@ -10,6 +10,7 @@ import UIKit
 class FriendsController: UITableViewController {
 
     var names = ["Антонов Петр","Бочкин Алексей","Воронин Дмитрий","Галочкина Мария","Новикова Ксения"]
+    var image = ["168724", "168723", "168726", "168727", "168730" ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +33,8 @@ class FriendsController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! FriendsCell
-        cell.imageAva.image = UIImage(named: "168724")
+        let name = image[indexPath.row]
+        cell.imageAva.image = UIImage(named: name)
         
 }
 }

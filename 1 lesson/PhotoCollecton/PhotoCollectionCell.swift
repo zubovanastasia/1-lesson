@@ -18,18 +18,24 @@ class PhotoCollectionCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
+    
+    private func pressButton() {
+    if number == 0 {
+        self.addLike()
+    }else{
+        self.removeLike()
+    }
 }
-/*func configure(with item: AddLike) {
-    self.like = item.addLike
-    self.like = item.removeLike
-    self.like(item.addLike, animated: true)
+    private func addLike () {
+        number += 1
+        self.likeItem.text = "\(number)"
+}
+    private func removeLike () {
+        number = 0
+        self.likeItem.text = "\(number)"
+    }
+    
+    @IBAction private func likeOnOff(_ sender: Any) {
+        self.pressButton()
 }
 }
-    @IBAction func likeOnOff(_ sender: Any) {
-       // self.likeItem.text = sender.value.round(1).likeItem
-}
-struct AddLike {
-    let addLike = "1"
-    let removeLike = "0"
-}
-*/

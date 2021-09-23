@@ -10,7 +10,7 @@ import UIKit
 class CommunitiesController: UITableViewController {
     
     var nameCom = ["Искусство", "Программирование", "Музыка", "Технологии", "Наука"]
-    
+    var image = ["1","2","3","4","5"]
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -28,7 +28,8 @@ class CommunitiesController: UITableViewController {
 }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! CommunitiesCell
-        cell.imageCommunity.image = UIImage()
+        let name = image[indexPath.row]
+        cell.imageCommunity.image = UIImage(named: name)
     }
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {

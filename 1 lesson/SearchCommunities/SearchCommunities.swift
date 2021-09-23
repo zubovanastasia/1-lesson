@@ -9,6 +9,7 @@ import UIKit
 
 class SearchCommunitiesController: UITableViewController {
     var nameSearchCom = ["Кинематограф", "Политика", "Дизайн", "Эстетика" ]
+    var image = ["6","7","8","9"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +28,8 @@ class SearchCommunitiesController: UITableViewController {
 }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! SearchCommunitiesCell
-        cell.imageSearchComm.image = UIImage()
+        let name = image[indexPath.row]
+        cell.imageSearchComm.image = UIImage(named: name)
         }
       
     }
