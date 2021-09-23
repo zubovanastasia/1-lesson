@@ -55,7 +55,7 @@ class ViewController: UIViewController {
     let login = self.LoginText.text
         let pass = self.PassText.text
             
-        if login == "admin" && pass == "123456" {
+        if login == "1" && pass == "1" {
             self.showAdmin()
         } else {
             self.showAlert()

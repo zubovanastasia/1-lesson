@@ -42,7 +42,7 @@
                                             </constraints>
                                             <imageReference key="image" image="168726"/>
                                         </imageView>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GyW-cO-cjE">
+                                        <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="like" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GyW-cO-cjE">
                                             <rect key="frame" x="123" y="129" width="27" height="18"/>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="plain">
@@ -80,6 +80,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
+                                    <outlet property="like" destination="GyW-cO-cjE" id="6f6-3Q-fOB"/>
                                     <outlet property="likeItem" destination="FgR-0J-GeP" id="AJM-ic-We5"/>
                                     <outlet property="photoFriend" destination="H3t-Dk-zC4" id="JiD-XG-A9n"/>
                                 </connections>

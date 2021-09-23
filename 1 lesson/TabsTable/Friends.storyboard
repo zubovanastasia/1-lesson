@@ -10,7 +10,7 @@
         <!--Friends Controller-->
         <scene sceneID="glc-X7-JvV">
             <objects>
-                <tableViewController id="Erd-GN-LH0" customClass="FriendsController" customModule="__lesson" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController interfaceStyle="dark" id="Erd-GN-LH0" customClass="FriendsController" customModule="__lesson" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="TableViewFriends" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="7Im-kD-SXU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -84,6 +84,8 @@
                         </prototypes>
                         <sections/>
                     </tableView>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" barStyle="black"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fop-l2-baH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

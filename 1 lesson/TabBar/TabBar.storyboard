@@ -41,7 +41,7 @@
                             </hierarchicalColors>
                         </imageReference>
                     </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" largeTitles="YES" id="Z0Q-Wf-Ss5">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" largeTitles="YES" id="Z0Q-Wf-Ss5" userLabel="Друзья">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -129,7 +129,7 @@
                             </hierarchicalColors>
                         </imageReference>
                     </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" largeTitles="YES" id="ZHQ-Oc-ck7">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" largeTitles="YES" id="ZHQ-Oc-ck7" userLabel="Друзья">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -181,7 +181,7 @@
         <scene sceneID="FNV-pe-Y3v">
             <objects>
                 <viewControllerPlaceholder storyboardName="Communities" id="Yfs-kg-SZn" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" title="Сообщества" largeTitleDisplayMode="always" id="Sgg-66-ya6">
+                    <navigationItem key="navigationItem" title="Сообщества" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="always" id="Sgg-66-ya6">
                         <barButtonItem key="backBarButtonItem" title="Назад" id="vND-w2-RgS"/>
                     </navigationItem>
                 </viewControllerPlaceholder>
