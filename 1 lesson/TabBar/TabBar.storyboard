@@ -20,6 +20,7 @@
                         <color key="selectedImageTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
+                        <segue destination="aqc-5t-SQB" kind="relationship" relationship="viewControllers" id="Weg-IM-yQU"/>
                         <segue destination="bdn-Xp-XWR" kind="relationship" relationship="viewControllers" id="FAL-0E-WmM"/>
                         <segue destination="w9n-XX-0Cq" kind="relationship" relationship="viewControllers" id="riP-uL-nbC"/>
                     </connections>
@@ -31,7 +32,7 @@
         <!--Друзья-->
         <scene sceneID="UtZ-XX-SGO">
             <objects>
-                <navigationController modalPresentationStyle="fullScreen" interfaceStyle="dark" id="bdn-Xp-XWR" sceneMemberID="viewController">
+                <navigationController modalPresentationStyle="fullScreen" id="bdn-Xp-XWR" customClass="NavigationFriends" customModule="__lesson" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Друзья" id="2yr-Nz-O99">
                         <imageReference key="image" image="person.2.circle" catalog="system" symbolScale="large" renderingMode="hierarchical-single">
                             <hierarchicalColors>
@@ -41,11 +42,10 @@
                             </hierarchicalColors>
                         </imageReference>
                     </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" largeTitles="YES" id="Z0Q-Wf-Ss5" userLabel="Друзья">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="Z0Q-Wf-Ss5" userLabel="Друзья">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="textShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -55,17 +55,13 @@
                             <color key="textShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                         <navigationBarAppearance key="standardAppearance" backgroundImageContentMode="scaleToFill">
-                            <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <color key="shadowColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <textAttributes key="titleTextAttributes">
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="textShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </textAttributes>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="shadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <barButtonItemAppearance key="buttonAppearance">
                                 <barButtonItemStateAppearance key="normal">
                                     <textAttributes key="titleTextAttributes">
-                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="textShadowColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </textAttributes>
                                 </barButtonItemStateAppearance>
                                 <barButtonItemStateAppearance key="highlighted"/>
@@ -75,8 +71,8 @@
                             <barButtonItemAppearance key="doneButtonAppearance">
                                 <barButtonItemStateAppearance key="normal">
                                     <textAttributes key="titleTextAttributes">
-                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="textShadowColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </textAttributes>
                                 </barButtonItemStateAppearance>
                                 <barButtonItemStateAppearance key="highlighted"/>
@@ -86,8 +82,8 @@
                             <barButtonItemAppearance key="backButtonAppearance">
                                 <barButtonItemStateAppearance key="normal">
                                     <textAttributes key="titleTextAttributes">
-                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="textShadowColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </textAttributes>
                                 </barButtonItemStateAppearance>
                                 <barButtonItemStateAppearance key="highlighted"/>
@@ -102,24 +98,22 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nb7-86-BYc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1529" y="291"/>
+            <point key="canvasLocation" x="-1884" y="291"/>
         </scene>
         <!--Friends-->
         <scene sceneID="X2h-B9-stT">
             <objects>
                 <viewControllerPlaceholder storyboardName="Friends" id="aTX-1v-8YD" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" title="Друзья" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="always" id="pXK-m0-Xr0">
-                        <barButtonItem key="backBarButtonItem" title="Назад" id="gQY-1y-eny"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="always" id="pXK-m0-Xr0"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jvc-HA-IFt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1638" y="701"/>
+            <point key="canvasLocation" x="-1884" y="700"/>
         </scene>
         <!--Сообщества-->
         <scene sceneID="7OM-9Y-TES">
             <objects>
-                <navigationController id="w9n-XX-0Cq" sceneMemberID="viewController">
+                <navigationController modalPresentationStyle="fullScreen" id="w9n-XX-0Cq" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Сообщества" id="b0J-Go-2aD">
                         <imageReference key="image" image="person.3" catalog="system" symbolScale="large" renderingMode="hierarchical-single">
                             <hierarchicalColors>
@@ -129,11 +123,10 @@
                             </hierarchicalColors>
                         </imageReference>
                     </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" largeTitles="YES" id="ZHQ-Oc-ck7" userLabel="Друзья">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="ZHQ-Oc-ck7" userLabel="Друзья">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="textShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -143,13 +136,13 @@
                             <color key="textShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                         <navigationBarAppearance key="standardAppearance" backgroundImageContentMode="scaleToFill">
-                            <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <color key="shadowColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="shadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <barButtonItemAppearance key="buttonAppearance">
                                 <barButtonItemStateAppearance key="normal">
                                     <textAttributes key="titleTextAttributes">
-                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="textShadowColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </textAttributes>
                                 </barButtonItemStateAppearance>
                                 <barButtonItemStateAppearance key="highlighted"/>
@@ -159,8 +152,8 @@
                             <barButtonItemAppearance key="doneButtonAppearance">
                                 <barButtonItemStateAppearance key="normal">
                                     <textAttributes key="titleTextAttributes">
-                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="textShadowColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </textAttributes>
                                 </barButtonItemStateAppearance>
                                 <barButtonItemStateAppearance key="highlighted"/>
@@ -175,22 +168,87 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HzY-Js-owb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-891" y="291"/>
+            <point key="canvasLocation" x="-1220" y="291"/>
+        </scene>
+        <!--Новости-->
+        <scene sceneID="Y2g-Hb-rBi">
+            <objects>
+                <navigationController modalPresentationStyle="fullScreen" id="aqc-5t-SQB" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Новости" id="SCT-LX-KwP">
+                        <imageReference key="image" image="list.bullet.rectangle" catalog="system"/>
+                    </tabBarItem>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="LuA-ZH-IBc">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="textShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="textShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <navigationBarAppearance key="standardAppearance" backgroundImageContentMode="scaleToFill">
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="shadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <barButtonItemAppearance key="buttonAppearance">
+                                <barButtonItemStateAppearance key="normal">
+                                    <textAttributes key="titleTextAttributes">
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </textAttributes>
+                                </barButtonItemStateAppearance>
+                                <barButtonItemStateAppearance key="highlighted"/>
+                                <barButtonItemStateAppearance key="disabled"/>
+                                <barButtonItemStateAppearance key="focused"/>
+                            </barButtonItemAppearance>
+                            <barButtonItemAppearance key="doneButtonAppearance">
+                                <barButtonItemStateAppearance key="normal">
+                                    <textAttributes key="titleTextAttributes">
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </textAttributes>
+                                </barButtonItemStateAppearance>
+                                <barButtonItemStateAppearance key="highlighted"/>
+                                <barButtonItemStateAppearance key="disabled"/>
+                                <barButtonItemStateAppearance key="focused"/>
+                            </barButtonItemAppearance>
+                        </navigationBarAppearance>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="XeJ-bV-zbW" kind="relationship" relationship="rootViewController" id="Lcy-Su-4yF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kWd-OW-fyK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-545" y="291"/>
         </scene>
         <!--Communities-->
         <scene sceneID="FNV-pe-Y3v">
             <objects>
                 <viewControllerPlaceholder storyboardName="Communities" id="Yfs-kg-SZn" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" title="Сообщества" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="always" id="Sgg-66-ya6">
-                        <barButtonItem key="backBarButtonItem" title="Назад" id="vND-w2-RgS"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="Sgg-66-ya6"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hcg-fk-5EY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-891" y="700"/>
+            <point key="canvasLocation" x="-1220" y="700"/>
+        </scene>
+        <!--NewsController-->
+        <scene sceneID="1Th-yB-pb3">
+            <objects>
+                <viewControllerPlaceholder storyboardName="NewsController" id="XeJ-bV-zbW" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" title="Новости" largeTitleDisplayMode="always" id="sor-vU-dv8">
+                        <barButtonItem key="backBarButtonItem" title="Назад" id="rws-Hi-6VL"/>
+                    </navigationItem>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ljC-mG-mSS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-546" y="700"/>
         </scene>
     </scenes>
     <resources>
+        <image name="list.bullet.rectangle" catalog="system" width="128" height="93"/>
         <image name="person.2.circle" catalog="system" width="128" height="121"/>
         <image name="person.3" catalog="system" width="128" height="62"/>
         <systemColor name="secondaryLabelColor">
