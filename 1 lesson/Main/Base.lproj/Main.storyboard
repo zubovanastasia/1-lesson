@@ -135,6 +135,10 @@
                         <outlet property="LoginText" destination="FcO-Gi-1fa" id="MYd-6G-hHw"/>
                         <outlet property="PassText" destination="8pr-kL-9XG" id="4im-fT-UO9"/>
                         <outlet property="ScrollView" destination="zuL-3W-5Bk" id="Wil-Ec-Py1"/>
+                        <outlet property="button" destination="YMf-F8-R2Z" id="3xK-ed-ngv"/>
+                        <outlet property="textLogin" destination="CDY-Ln-WVZ" id="IGw-7o-LoL"/>
+                        <outlet property="textPass" destination="TJY-Mz-eaP" id="kFK-Fm-fyY"/>
+                        <outlet property="vk" destination="NBH-iR-cun" id="kkG-6y-7bl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
