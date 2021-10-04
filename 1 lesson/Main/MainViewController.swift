@@ -6,10 +6,10 @@ class ViewController: UIViewController {
     @IBOutlet private weak var ScrollView: UIScrollView!
     @IBOutlet private weak var LoginText: UITextField!
     @IBOutlet private weak var PassText: UITextField!
-    @IBOutlet weak var textPass: UILabel!
-    @IBOutlet weak var textLogin: UILabel!
-    @IBOutlet weak var button: UIButton!
-    @IBOutlet weak var vk: UILabel!
+    @IBOutlet private weak var textPass: UILabel!
+    @IBOutlet private weak var textLogin: UILabel!
+    @IBOutlet private weak var button: UIButton!
+    @IBOutlet private weak var vk: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +20,7 @@ class ViewController: UIViewController {
         animateFieldsAppearing()
     }
     
-    func animateTitlesAppearing() {
+    private func animateTitlesAppearing() {
         let offset = view.bounds.width
         textLogin.transform = CGAffineTransform(translationX: -offset, y: 0)
         textPass.transform = CGAffineTransform(translationX: offset, y: 0)
@@ -32,7 +32,7 @@ class ViewController: UIViewController {
                        completion: nil)
     }
     
-    func animateTitleAppearing() {
+    private func animateTitleAppearing() {
         self.vk.transform = CGAffineTransform(translationX: 0, y: -self.view.bounds.height/2)
         
         UIView.animate(withDuration: 1, delay: 1, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .curveEaseOut, animations: {
@@ -41,7 +41,7 @@ class ViewController: UIViewController {
                        completion: nil)
     }
     
-    func animateFieldsAppearing() {
+    private func animateFieldsAppearing() {
         let fadeInAnimation = CABasicAnimation(keyPath: "opacity")
         fadeInAnimation.fromValue = 0
         fadeInAnimation.toValue = 1
@@ -54,7 +54,7 @@ class ViewController: UIViewController {
         self.textPass.layer.add(fadeInAnimation, forKey: nil)
     }
     
-    func animateAuthButton() {
+    private func animateAuthButton() {
         let animation = CASpringAnimation(keyPath: "transform.scale")
         animation.fromValue = 0
         animation.toValue = 1
@@ -66,7 +66,25 @@ class ViewController: UIViewController {
         
         self.button.layer.add(animation, forKey: nil)
     }
-
+    private func animatePassLog () {
+        let fadeInAnimation = CABasicAnimation(keyPath: "opacity")
+        fadeInAnimation.fromValue = 0
+        fadeInAnimation.toValue = 1
+        let scaleAnimation = CASpringAnimation(keyPath: "transform.scale")
+        scaleAnimation.fromValue = 0
+        scaleAnimation.toValue = 1
+        scaleAnimation.stiffness = 150
+        scaleAnimation.mass = 2
+        let animationsGroup = CAAnimationGroup()
+        animationsGroup.duration = 1
+        animationsGroup.beginTime = CACurrentMediaTime() + 1
+        animationsGroup.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
+        animationsGroup.fillMode = CAMediaTimingFillMode.backwards
+        animationsGroup.animations = [fadeInAnimation, scaleAnimation]
+        self.LoginText.layer.add(animationsGroup, forKey: nil)
+        self.PassText.layer.add(animationsGroup, forKey: nil)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.addObservers()
