@@ -32,7 +32,7 @@
         <!--Друзья-->
         <scene sceneID="UtZ-XX-SGO">
             <objects>
-                <navigationController modalPresentationStyle="fullScreen" id="bdn-Xp-XWR" customClass="NavigationFriends" customModule="__lesson" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController modalPresentationStyle="fullScreen" id="bdn-Xp-XWR" customClass="FriendsNavigationController" customModule="__lesson" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Друзья" id="2yr-Nz-O99">
                         <imageReference key="image" image="person.2.circle" catalog="system" symbolScale="large" renderingMode="hierarchical-single">
                             <hierarchicalColors>
@@ -113,7 +113,7 @@
         <!--Сообщества-->
         <scene sceneID="7OM-9Y-TES">
             <objects>
-                <navigationController modalPresentationStyle="fullScreen" id="w9n-XX-0Cq" sceneMemberID="viewController">
+                <navigationController modalPresentationStyle="fullScreen" id="w9n-XX-0Cq" customClass="CommunitiesNavigationController" customModule="__lesson" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Сообщества" id="b0J-Go-2aD">
                         <imageReference key="image" image="person.3" catalog="system" symbolScale="large" renderingMode="hierarchical-single">
                             <hierarchicalColors>
