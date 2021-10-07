@@ -18,6 +18,7 @@ class ViewController: UIViewController {
         animateTitlesAppearing()
         animateAuthButton()
         animateFieldsAppearing()
+        animatePassLog()
     }
     
     private func animateTitlesAppearing() {
