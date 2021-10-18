@@ -18,6 +18,7 @@
 		631EE9DF26ECF2B5001B8C8D /* FriendsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631EE9DE26ECF2B5001B8C8D /* FriendsController.swift */; };
 		631EE9E126ECF2D1001B8C8D /* CommunitiesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631EE9E026ECF2D1001B8C8D /* CommunitiesController.swift */; };
 		631EE9E526ECFF92001B8C8D /* CommunitiesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631EE9E426ECFF92001B8C8D /* CommunitiesCell.swift */; };
+		63220499271E01B3000C6E6D /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63220498271E01B3000C6E6D /* Session.swift */; };
 		63425B5E26F35ECA00B8EB36 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63425B5D26F35ECA00B8EB36 /* User.swift */; };
 		63425B6026F35EF700B8EB36 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63425B5F26F35EF700B8EB36 /* Group.swift */; };
 		637F296026EE8F8B003DA5E3 /* PhotoCollection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 637F295F26EE8F8B003DA5E3 /* PhotoCollection.storyboard */; };
@@ -47,6 +48,7 @@
 		631EE9DE26ECF2B5001B8C8D /* FriendsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsController.swift; sourceTree = "<group>"; };
 		631EE9E026ECF2D1001B8C8D /* CommunitiesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunitiesController.swift; sourceTree = "<group>"; };
 		631EE9E426ECFF92001B8C8D /* CommunitiesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunitiesCell.swift; sourceTree = "<group>"; };
+		63220498271E01B3000C6E6D /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		63425B5D26F35ECA00B8EB36 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		63425B5F26F35EF700B8EB36 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		637F295F26EE8F8B003DA5E3 /* PhotoCollection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PhotoCollection.storyboard; sourceTree = "<group>"; };
@@ -111,6 +113,14 @@
 			path = TabsTable;
 			sourceTree = "<group>";
 		};
+		6322049A271E01C0000C6E6D /* Session */ = {
+			isa = PBXGroup;
+			children = (
+				63220498271E01B3000C6E6D /* Session.swift */,
+			);
+			path = Session;
+			sourceTree = "<group>";
+		};
 		63425B6126F35EFE00B8EB36 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +171,7 @@
 			children = (
 				6316E60D26FE33DC003F1DD0 /* R.swift */,
 				63F6414426E500730039743F /* AppDelegate.swift */,
+				6322049A271E01C0000C6E6D /* Session */,
 				63F6414626E500730039743F /* SceneDelegate.swift */,
 				63425B6126F35EFE00B8EB36 /* Model */,
 				631EE9D326E7EAD4001B8C8D /* Main */,
@@ -260,6 +271,7 @@
 				6316E60E26FE33DC003F1DD0 /* R.swift in Sources */,
 				631EE9E126ECF2D1001B8C8D /* CommunitiesController.swift in Sources */,
 				637F296426EE8FF8003DA5E3 /* SearchCommunities.swift in Sources */,
+				63220499271E01B3000C6E6D /* Session.swift in Sources */,
 				63F6414526E500730039743F /* AppDelegate.swift in Sources */,
 				63425B6026F35EF700B8EB36 /* Group.swift in Sources */,
 				631EE9D126E7EA7C001B8C8D /* TabBarViewController.swift in Sources */,
