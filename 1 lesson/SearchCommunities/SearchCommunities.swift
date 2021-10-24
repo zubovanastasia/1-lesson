@@ -8,6 +8,9 @@
 import UIKit
 
 class SearchCommunitiesController: UITableViewController, UISearchBarDelegate {
+   
+    let searchCommunities = SearchCommunitiesAPI()
+    
     var nameSearchCom = ["Кинематограф", "Политика", "Дизайн", "Эстетика" ]
     var image = ["6","7","8","9"]
     var filterCom = [String]()
@@ -17,6 +20,11 @@ class SearchCommunitiesController: UITableViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         filterCom = nameSearchCom
+        
+        searchCommunities.getSearchGroups { searchGroups in
+            
+            print("Получили результаты поиска по группам")
+        }
     }
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

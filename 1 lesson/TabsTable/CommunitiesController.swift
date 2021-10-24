@@ -9,6 +9,8 @@ import UIKit
 
 class CommunitiesController: UITableViewController {
     
+    let communitiesService = CommunitiesAPI()
+    
     var nameCom = ["Искусство", "Программирование", "Музыка", "Технологии", "Наука"]
     var image = ["1","2","3","4","5"]
     
@@ -16,6 +18,11 @@ class CommunitiesController: UITableViewController {
         super.viewDidLoad()
         self.navigationItem.title = "Мои Сообщества"
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        
+        communitiesService.getGroups { groups in
+            
+            print("Получили группы пользователя")
+        }
     }
     
     override func didReceiveMemoryWarning() {

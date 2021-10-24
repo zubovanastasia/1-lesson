@@ -8,10 +8,18 @@
 import UIKit
 
 class PhotoCollectionController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+   
+    let photosAPI = PhotoAPI()
+    
     var photoFriends = [UIImage]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        photosAPI.getPhoto { photos in
+            
+            print("Получили фото друзей")
+        }
     }
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
