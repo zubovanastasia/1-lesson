@@ -9,6 +9,8 @@ import UIKit
 
 class FriendsController: UITableViewController {
 
+    let friendsService = FriendsAPI()
+    
     var names = ["Веселова Евгения","Ермолин Артем","Ухова Ольга","Краснова Анна", "Антонов Петр","Бочкин Алексей","Воронин Дмитрий","Галочкина Мария","Новикова Ксения"]
     var image = ["168724", "168723", "168726", "168727", "168730" ]
     var sections = ["А","Б","В","Г","Д","Е","Ж","З","И","Й","К","Л","М","Н","О","П","Р","С","Т","У","Ф","Х","Ч","Ш","Щ","Э","Ю","Я"]
@@ -32,6 +34,11 @@ class FriendsController: UITableViewController {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
         self.mutable()
+        
+        friendsService.getFriends { friends in
+            
+            print("Получили друзей")
+        }
     }
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
