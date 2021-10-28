@@ -10,18 +10,17 @@ import UIKit
 class CommunitiesController: UITableViewController {
     
     let communitiesService = CommunitiesAPI()
-    
-    var nameCom = ["Искусство", "Программирование", "Музыка", "Технологии", "Наука"]
-    var image = ["1","2","3","4","5"]
+    var groups: [Group] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "Мои Сообщества"
-        self.navigationController?.navigationBar.prefersLargeTitles = true
+ //       self.navigationItem.title = "Мои Сообщества"
+//        self.navigationController?.navigationBar.prefersLargeTitles = true
         
-        communitiesService.getGroups { groups in
-            
-            print("Получили группы пользователя")
+        communitiesService.getGroups { [weak self] groups in
+            guard let self = self else { return }
+            self.groups = groups
+            self.tableView.reloadData()
         }
     }
     
@@ -29,26 +28,25 @@ class CommunitiesController: UITableViewController {
         super.didReceiveMemoryWarning()
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return nameCom.count
+        return groups.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "community", for: indexPath) as! CommunitiesCell
-        let name = nameCom[indexPath.row]
-        let name2 = image[indexPath.row]
-        cell.imageCommunity.image = UIImage(named: name2)
-        cell.nameCommunity.text = name
+        let groups = groups[indexPath.row]
+        cell.textLabel?.text = groups.name
+        cell.textLabel?.textColor = .white
         return cell
 }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     }
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            nameCom.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-        }
+  //  override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+ //       if editingStyle == .delete {
+ //           groups.remove(at: indexPath.row)
+ //           tableView.deleteRows(at: [indexPath], with: .automatic)
+  //      }
       
-    }
-}
+  //  }
+//}
 class CommunitiesNavigationController: UINavigationController, UINavigationControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,4 +60,5 @@ class CommunitiesNavigationController: UINavigationController, UINavigationContr
         }
         return nil
     }
+}
 }

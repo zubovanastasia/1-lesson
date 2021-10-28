@@ -8,9 +8,6 @@
 import Foundation
 import Alamofire
 
-struct Communities {
-    
-}
 final class CommunitiesAPI {
     
     let baseURL = "https://api.vk.com/method"
@@ -18,7 +15,7 @@ final class CommunitiesAPI {
     let userId = Session.shared.userId
     let version = "5.81"
 
-    func getGroups(complition: @escaping([Communities]) -> ()) {
+    func getGroups(complition: @escaping([Group]) -> ()) {
         
         let method = "/groups.get"
         
@@ -32,7 +29,22 @@ final class CommunitiesAPI {
         
         AF.request(url, method: .get, parameters: parameters).responseJSON { response in
             
-            print(response.value)
+            guard let data = response.data else { return }
+            
+            debugPrint(response.data?.prettyJSON)
+            
+            do {
+                let jsonContainer: Any = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+                let object = jsonContainer as! [String: Any]
+                let response = object["response"] as! [String: Any]
+                let items = response["items"] as! [Any]
+                
+                let groups = items.map{Group(item: $0 as! [String: Any])}
+                complition(groups)
+                
+            } catch {
+                print(error)
+            }
         }
     }
 }
