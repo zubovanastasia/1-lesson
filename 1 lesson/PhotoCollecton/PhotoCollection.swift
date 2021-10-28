@@ -10,27 +10,29 @@ import UIKit
 class PhotoCollectionController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
    
     let photosAPI = PhotoAPI()
-    
-    var photoFriends = [UIImage]()
+    var photos = [Photo]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        photosAPI.getPhoto { photos in
-            
-            print("Получили фото друзей")
+        photosAPI.getPhoto { [weak self] photos in
+            guard let self = self else { return }
+            self.photos = photos
+            self.collectionView.reloadData()
         }
     }
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return photos.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photo", for: indexPath) as! PhotoCollectionCell
-        cell.photoFriend.image = UIImage()
+        let photo = photos[indexPath.row]
+        cell.imagePhoto?.image = photo.id
         return cell
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt IndexPath: IndexPath) -> CGSize {
+    
+func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt IndexPath: IndexPath) -> CGSize {
         let height: CGFloat = 150
         let row: CGFloat = 3
         let inset: CGFloat = 5
@@ -46,4 +48,16 @@ class PhotoCollectionController: UICollectionViewController, UICollectionViewDel
         return 5
     }
     }
-
+extension UIImageView {
+    func load(url: URL) {
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url) {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self?.image = image
+                    }
+                }
+            }
+        }
+    }
+}

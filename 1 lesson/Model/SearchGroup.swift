@@ -1,5 +1,5 @@
 //
-//  Group.swift
+//  SearchGroup.swift
 //  1 lesson
 //
 //  Created by Anastasiia Zubova on 26.10.2021.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Group {
+struct SearchGroup {
     var id: Int = 0
     var name: String?
     var screenName: String?

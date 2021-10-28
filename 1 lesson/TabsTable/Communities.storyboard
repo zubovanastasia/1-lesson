@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19150" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ka8-uM-khH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ka8-uM-khH">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19134"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,59 +20,17 @@
                         <color key="sectionIndexTrackingBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="community" id="SaO-2E-wko" customClass="CommunitiesCell" customModule="__lesson" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="49.5" width="414" height="45"/>
+                                <rect key="frame" x="0.0" y="49.5" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SaO-2E-wko" id="gpB-0g-QpN">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="45"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xYv-C4-YpY">
-                                            <rect key="frame" x="109" y="11" width="234" height="22.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9du-LF-Lug">
-                                            <rect key="frame" x="15" y="5" width="35" height="35"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MVV-fo-ri6">
-                                                    <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="35" id="jmo-Lq-E0w"/>
-                                                        <constraint firstAttribute="height" constant="35" id="w2c-T1-I0G"/>
-                                                    </constraints>
-                                                </imageView>
-                                            </subviews>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                            <constraints>
-                                                <constraint firstItem="MVV-fo-ri6" firstAttribute="centerY" secondItem="9du-LF-Lug" secondAttribute="centerY" id="6gB-28-psG"/>
-                                                <constraint firstItem="MVV-fo-ri6" firstAttribute="centerX" secondItem="9du-LF-Lug" secondAttribute="centerX" id="K5u-m8-czN"/>
-                                                <constraint firstAttribute="height" constant="35" id="hSF-ft-u3s"/>
-                                                <constraint firstAttribute="width" constant="35" id="oX8-4C-Dbt"/>
-                                            </constraints>
-                                        </view>
-                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="xYv-C4-YpY" secondAttribute="trailing" constant="51" id="3hR-SH-92v"/>
-                                        <constraint firstItem="xYv-C4-YpY" firstAttribute="leading" secondItem="9du-LF-Lug" secondAttribute="trailing" constant="59" id="8NR-g7-fUZ"/>
-                                        <constraint firstItem="9du-LF-Lug" firstAttribute="leading" secondItem="gpB-0g-QpN" secondAttribute="leading" constant="15" id="FP8-BK-UVG"/>
-                                        <constraint firstItem="xYv-C4-YpY" firstAttribute="top" secondItem="gpB-0g-QpN" secondAttribute="topMargin" id="YNJ-k8-X90"/>
-                                        <constraint firstAttribute="bottom" secondItem="9du-LF-Lug" secondAttribute="bottom" constant="5" id="asz-3P-9Xe"/>
-                                        <constraint firstItem="xYv-C4-YpY" firstAttribute="leading" secondItem="gpB-0g-QpN" secondAttribute="leadingMargin" constant="89" id="fwm-0Q-3IX"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="xYv-C4-YpY" secondAttribute="bottom" constant="0.5" id="ilw-f0-N82"/>
-                                        <constraint firstItem="9du-LF-Lug" firstAttribute="top" secondItem="gpB-0g-QpN" secondAttribute="top" constant="5" id="lcY-66-LuW"/>
-                                    </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
-                                    <outlet property="imageCommunity" destination="MVV-fo-ri6" id="PCa-i6-6fY"/>
-                                    <outlet property="nameCommunity" destination="xYv-C4-YpY" id="nhn-Ct-w41"/>
-                                    <outlet property="viewComShadow" destination="9du-LF-Lug" id="vhc-9w-1MN"/>
                                     <segue destination="1sN-6m-cKl" kind="show" id="kZl-8k-RXF"/>
                                 </connections>
                             </tableViewCell>
@@ -114,9 +71,4 @@
             <point key="canvasLocation" x="-41" y="524"/>
         </scene>
     </scenes>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>

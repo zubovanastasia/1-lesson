@@ -7,11 +7,9 @@
 
 import Foundation
 import Alamofire
+import UIKit
 
-struct Photo {
-    
-}
-final class PhotoAPI {
+final class PhotoAPI: UIImageView {
     
     let baseURL = "https://api.vk.com/method"
     let token = Session.shared.token
@@ -30,11 +28,28 @@ final class PhotoAPI {
             "count": 3,
             "extended": 1
         ]
+
         let url = baseURL + method
         
         AF.request(url, method: .get, parameters: parameters).responseJSON { response in
+
+         guard let data = response.data else { return }
             
-            print(response.value)
+            debugPrint(response.data?.prettyJSON)
+            
+            do {
+                let jsonContainer: Any = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+                let object = jsonContainer as! [String: Any]
+                let response = object["response"] as! [String: Any]
+                let items = response["items"] as! [String: Any]
+                
+                let photos = items.map{Photo(item: $0 as! [String: Any])}
+                
+                complition(photos)
+                
+            } catch {
+                print(error)
         }
     }
+}
 }

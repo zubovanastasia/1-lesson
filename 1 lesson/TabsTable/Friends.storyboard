@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19150" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Erd-GN-LH0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Erd-GN-LH0">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19134"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -26,47 +25,8 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VV3-Zr-YyH" id="xRY-9s-u6e">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="45"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="nameLabel" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" showsExpansionTextWhenTruncated="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Odk-N7-Xfz">
-                                            <rect key="frame" x="100" y="11.5" width="274" height="23"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <nil key="highlightedColor"/>
-                                            <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </label>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i5k-Ey-a1W">
-                                            <rect key="frame" x="15" y="5" width="35" height="35"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZTL-wp-kfN">
-                                                    <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="35" id="KOD-rD-Mf0"/>
-                                                        <constraint firstAttribute="height" constant="35" id="dfr-bB-4ba"/>
-                                                    </constraints>
-                                                </imageView>
-                                            </subviews>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="35" id="X6F-Ok-ebu"/>
-                                                <constraint firstItem="ZTL-wp-kfN" firstAttribute="centerY" secondItem="i5k-Ey-a1W" secondAttribute="centerY" id="qTx-xz-bPi"/>
-                                                <constraint firstAttribute="width" constant="35" id="vsc-pb-miM"/>
-                                                <constraint firstItem="ZTL-wp-kfN" firstAttribute="centerX" secondItem="i5k-Ey-a1W" secondAttribute="centerX" id="zSu-JV-3kd"/>
-                                            </constraints>
-                                        </view>
-                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <constraints>
-                                        <constraint firstItem="i5k-Ey-a1W" firstAttribute="leading" secondItem="xRY-9s-u6e" secondAttribute="leading" constant="15" id="95O-dl-cft"/>
-                                        <constraint firstItem="Odk-N7-Xfz" firstAttribute="leading" secondItem="i5k-Ey-a1W" secondAttribute="trailing" constant="50" id="CBZ-tm-deF"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="Odk-N7-Xfz" secondAttribute="trailing" constant="20" id="NuN-Sz-Epw"/>
-                                        <constraint firstItem="i5k-Ey-a1W" firstAttribute="top" secondItem="xRY-9s-u6e" secondAttribute="top" constant="5" id="SwR-c2-Rmm"/>
-                                        <constraint firstItem="Odk-N7-Xfz" firstAttribute="leading" secondItem="xRY-9s-u6e" secondAttribute="leading" constant="100" id="Vl5-W1-hk8"/>
-                                        <constraint firstItem="Odk-N7-Xfz" firstAttribute="bottom" secondItem="xRY-9s-u6e" secondAttribute="bottomMargin" constant="0.5" id="YBC-LQ-AaY"/>
-                                        <constraint firstItem="Odk-N7-Xfz" firstAttribute="top" secondItem="xRY-9s-u6e" secondAttribute="topMargin" constant="0.5" id="eSP-4a-WPU"/>
-                                        <constraint firstAttribute="bottom" secondItem="i5k-Ey-a1W" secondAttribute="bottom" constant="5" id="pEu-gm-Ivd"/>
-                                    </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -75,9 +35,6 @@
                                     <bool key="isElement" value="YES"/>
                                 </accessibility>
                                 <connections>
-                                    <outlet property="imageAva" destination="ZTL-wp-kfN" id="2Th-TW-m12"/>
-                                    <outlet property="nameLabel" destination="Odk-N7-Xfz" id="sG9-xm-V9I"/>
-                                    <outlet property="viewShadow" destination="i5k-Ey-a1W" id="Bzp-By-tiN"/>
                                     <segue destination="xnE-7y-iHt" kind="show" id="Pag-LF-Hvf"/>
                                 </connections>
                             </tableViewCell>
@@ -102,9 +59,4 @@
             <point key="canvasLocation" x="-305" y="402"/>
         </scene>
     </scenes>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>
