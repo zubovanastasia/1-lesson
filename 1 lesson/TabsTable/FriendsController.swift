@@ -10,7 +10,7 @@ import UIKit
 class FriendsController: UITableViewController {
 
     let friendsService = FriendsAPI()
-    var friends: [Friends] = []
+    var friends: [FriendsDB] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +20,7 @@ class FriendsController: UITableViewController {
         
         friendsService.getFriends { [weak self] friends in
             guard let self = self else { return }
-            self.friends = friends
+            self.friends = friends ?? []
             self.tableView.reloadData()
         }
     }
@@ -65,11 +65,19 @@ class FriendsController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let friend = friends[indexPath.row]
+        let storyboard = UIStoryboard(name: "PhotoCollection", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "PhotoCollectionController")
+        let photoVC = PhotoCollectionController()
+        photoVC.friendID = String(friend.id)
+        photoVC.loadPhoto(friendID: String(friend.id))
+        self.navigationController?.pushViewController(vc, animated: true)
         
 }
 }
 
 final class NavigationPushAnimator: NSObject, UIViewControllerAnimatedTransitioning {
+    
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.5

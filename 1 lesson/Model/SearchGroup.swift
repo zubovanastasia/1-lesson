@@ -6,16 +6,18 @@
 //
 
 import Foundation
+import RealmSwift
 
-struct SearchGroup {
-    var id: Int = 0
-    var name: String?
-    var screenName: String?
-    var isClosed: Int = 0
-    var type: String?
-    var photo50: String?
+class SearchGroupDB: Object {
+    @objc dynamic var id: Int = 0
+    @objc dynamic var name: String?
+    @objc dynamic var screenName: String?
+    @objc dynamic var isClosed: Int = 0
+    @objc dynamic var type: String?
+    @objc dynamic var photo50: String?
     
-    init (item: [String: Any]) {
+    convenience init (item: [String: Any]) {
+        self.init()
         self.id = item["id"] as! Int
         self.name = item["name"] as? String
         self.screenName = item["screen_name"] as? String

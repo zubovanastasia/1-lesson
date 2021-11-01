@@ -16,7 +16,7 @@ final class PhotoAPI: UIImageView {
     let userId = Session.shared.userId
     let version = "5.81"
 
-    func getPhoto(complition: @escaping([Photo]) -> ()) {
+    func getPhoto(friendID: String = "", complition: @escaping([PhotoDB]?) -> ()) {
         
         let method = "/photos.getAll"
         
@@ -24,27 +24,24 @@ final class PhotoAPI: UIImageView {
             "owner_id": userId,
             "access_token": token,
             "v": version,
-            "no_service_albums": 1,
-            "count": 3,
-            "extended": 1
+            "no_service_albums": 0,
+            "count": 10,
+            "extended": 1,
+            "photo_sizes": 1
         ]
-
+print(parameters)
         let url = baseURL + method
         
         AF.request(url, method: .get, parameters: parameters).responseJSON { response in
 
          guard let data = response.data else { return }
             
-            debugPrint(response.data?.prettyJSON)
+            debugPrint(response.data?.prettyJSON as Any)
             
             do {
-                let jsonContainer: Any = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers)
-                let object = jsonContainer as! [String: Any]
-                let response = object["response"] as! [String: Any]
-                let items = response["items"] as! [String: Any]
-                
-                let photos = items.map{Photo(item: $0 as! [String: Any])}
-                
+                let photoResponse = try? JSONDecoder().decode(PhotoResponse.self, from: data)
+                let photos = photoResponse?.response.items
+        
                 complition(photos)
                 
             } catch {
