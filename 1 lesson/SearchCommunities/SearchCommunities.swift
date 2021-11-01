@@ -10,7 +10,7 @@ import UIKit
 class SearchCommunitiesController: UITableViewController, UISearchBarDelegate {
    
     let searchCommunities = SearchCommunitiesAPI()
-    var searchGroup: [SearchGroup] = []
+    var searchGroup: [SearchGroupDB] = []
     
  //   @IBOutlet private weak var searchBar: UISearchBar!
     

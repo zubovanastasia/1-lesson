@@ -15,7 +15,7 @@ final class CommunitiesAPI {
     let userId = Session.shared.userId
     let version = "5.81"
 
-    func getGroups(complition: @escaping([Group]) -> ()) {
+    func getGroups(complition: @escaping([GroupDB]) -> ()) {
         
         let method = "/groups.get"
         
@@ -31,7 +31,7 @@ final class CommunitiesAPI {
             
             guard let data = response.data else { return }
             
-            debugPrint(response.data?.prettyJSON)
+            debugPrint(response.data?.prettyJSON as Any)
             
             do {
                 let jsonContainer: Any = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers)
@@ -39,7 +39,7 @@ final class CommunitiesAPI {
                 let response = object["response"] as! [String: Any]
                 let items = response["items"] as! [Any]
                 
-                let groups = items.map{Group(item: $0 as! [String: Any])}
+                let groups = items.map{GroupDB(item: $0 as! [String: Any])}
                 complition(groups)
                 
             } catch {

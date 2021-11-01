@@ -15,7 +15,7 @@ final class SearchCommunitiesAPI {
     let userId = Session.shared.userId
     let version = "5.81"
 
-    func getSearchGroups(complition: @escaping([SearchGroup]) -> ()) {
+    func getSearchGroups(complition: @escaping([SearchGroupDB]) -> ()) {
         
         let method = "/groups.search"
         
@@ -30,7 +30,7 @@ final class SearchCommunitiesAPI {
             
             guard let data = response.data else { return }
             
-            debugPrint(response.data?.prettyJSON)
+            debugPrint(response.data?.prettyJSON as Any)
             
             do {
                 let jsonContainer: Any = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers)
@@ -38,7 +38,7 @@ final class SearchCommunitiesAPI {
                 let response = object["response"] as! [String: Any]
                 let items = response["items"] as! [Any]
                 
-                let searchGroups = items.map{SearchGroup(item: $0 as! [String: Any])}
+                let searchGroups = items.map{SearchGroupDB(item: $0 as! [String: Any])}
                 complition(searchGroups)
                 
             } catch {

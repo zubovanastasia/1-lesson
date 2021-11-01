@@ -10,7 +10,7 @@ import UIKit
 class CommunitiesController: UITableViewController {
     
     let communitiesService = CommunitiesAPI()
-    var groups: [Group] = []
+    var groups: [GroupDB] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()

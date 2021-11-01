@@ -15,7 +15,7 @@ final class FriendsAPI {
     let userId = Session.shared.userId
     let version = "5.81"
     
-    func getFriends(complition: @escaping([Friends]) -> ()) {
+    func getFriends(complition: @escaping([FriendsDB]?) -> ()) {
         
         let method = "/friends.get"
         
@@ -23,7 +23,7 @@ final class FriendsAPI {
             "userId": userId,
             "order": "name",
             "fields": "photo_50, photo_100",
-            "count": 10,
+            "count": 50,
             "v": version,
             "access_token": token
         ]
@@ -33,7 +33,7 @@ final class FriendsAPI {
             
             guard let data = response.data else { return }
             
-            debugPrint(response.data?.prettyJSON)
+            debugPrint(response.data?.prettyJSON as Any)
             
             do {
                 let jsonContainer: Any = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers)
@@ -41,7 +41,8 @@ final class FriendsAPI {
                 let response = object["response"] as! [String: Any]
                 let items = response["items"] as! [Any]
                 
-                let friends = items.map{Friends(item: $0 as! [String: Any])}
+                let friends = items.map{FriendsDB(item: $0 as! [String: Any])}
+               
                 complition(friends)
                 
             } catch {
