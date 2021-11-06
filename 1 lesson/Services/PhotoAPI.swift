@@ -16,7 +16,7 @@ final class PhotoAPI: UIImageView {
     let userId = Session.shared.userId
     let version = "5.81"
 
-    func getPhoto(friendID: String = "", complition: @escaping([PhotoDB]?) -> ()) {
+    func getPhoto(friendID: String = "", complition: @escaping([PhotoModel]?) -> ()) {
         
         let method = "/photos.getAll"
         

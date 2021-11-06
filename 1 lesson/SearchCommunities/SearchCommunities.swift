@@ -6,20 +6,24 @@
 //
 
 import UIKit
+import RealmSwift
 
 class SearchCommunitiesController: UITableViewController, UISearchBarDelegate {
    
-    let searchCommunities = SearchCommunitiesAPI()
-    var searchGroup: [SearchGroupDB] = []
+    private let searchGroupsAPI = SearchCommunitiesAPI()
+    private var searchGroupsDB = SearchGroupsDB()
+    private var searchGroups: Results<SearchGroupModel>?
+    private var token: NotificationToken?
     
  //   @IBOutlet private weak var searchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        searchCommunities.getSearchGroups { [weak self] searchGroup in
+        searchGroupsAPI.getSearchGroups { [weak self] searchGroups in
             guard let self = self else { return }
-            self.searchGroup = searchGroup
+            self.searchGroupsDB.save(searchGroups)
+            self.searchGroups = self.searchGroupsDB.load()
             self.tableView.reloadData()
         }
     }
@@ -28,13 +32,17 @@ class SearchCommunitiesController: UITableViewController, UISearchBarDelegate {
         super.didReceiveMemoryWarning()
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return searchGroup.count
+        guard  let searchGroups = searchGroups else { return 0 }
+        return searchGroups.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchCom", for: indexPath) as! SearchCommunitiesCell
-        let searchGroup = searchGroup[indexPath.row]
-        cell.textLabel?.text = searchGroup.name
+        let searchGroup = searchGroups?[indexPath.row]
+        cell.textLabel?.text = searchGroup?.name
         cell.textLabel?.textColor = .white
+        if let url = URL(string: searchGroup?.photo50 ?? "") {
+            cell.imageView?.loadImageURL(url: url)
+        }
         return cell
 }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

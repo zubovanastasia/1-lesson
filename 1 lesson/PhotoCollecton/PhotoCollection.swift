@@ -6,17 +6,22 @@
 //
 
 import UIKit
+import RealmSwift
 
 class PhotoCollectionController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    let photosAPI = PhotoAPI()
-    var photos = [PhotoDB]()
+    private let photosAPI = PhotoAPI()
+    private let phootosDB = PhotosDB()
+    private var photos: Results<PhotoModel>?
+    private var token: NotificationToken?
+    
     var friendID: String = ""
     
     func loadPhoto(friendID: String) {
         photosAPI.getPhoto(friendID: friendID) { [weak self] photos in
             guard let self = self else { return }
-            self.photos = photos ?? []
+            self.phootosDB.save(photos ?? [])
+            self.photos = self.phootosDB.load()
             self.collectionView.reloadData()
         }
     }
@@ -32,19 +37,24 @@ class PhotoCollectionController: UICollectionViewController, UICollectionViewDel
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "photo")
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        guard  let photos = photos else { return 0 }
         return photos.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photo", for: indexPath) as! PhotoCollectionCell
-        let photo = photos[indexPath.row]
-        guard let url: URL = URL(string: photo.sizes[0].url) else { return UICollectionViewCell()}
-        cell.imagePhoto.load(url: url)
+        let photo = photos?[indexPath.row]
+        guard let url = URL(string: photo?.sizes[0].url ?? "") else { return UICollectionViewCell()}
+        cell.imagePhoto.loadImageURL(url: url)
         return cell
-    }
+        }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt IndexPath: IndexPath) -> CGSize {
+    /*  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt IndexPath: IndexPath) -> CGSize {
         let height: CGFloat = 150
         let row: CGFloat = 3
         let inset: CGFloat = 5
@@ -58,18 +68,5 @@ class PhotoCollectionController: UICollectionViewController, UICollectionViewDel
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 5
+    } */
     }
-    }
-extension UIImageView {
-    func load(url: URL) {
-        DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: url) {
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self?.image = image
-                    }
-                }
-            }
-        }
-    }
-}
