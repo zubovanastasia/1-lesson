@@ -13,7 +13,6 @@ class PhotoCollectionController: UICollectionViewController, UICollectionViewDel
     private let photosAPI = PhotoAPI()
     private let phootosDB = PhotosDB()
     private var photos: Results<PhotoModel>?
-    private var token: NotificationToken?
     
     var friendID: String = ""
     
