@@ -15,7 +15,7 @@ final class FriendsAPI {
     let userId = Session.shared.userId
     let version = "5.81"
     
-    func getFriends(complition: @escaping([FriendsDB]?) -> ()) {
+    func getFriends(complition: @escaping([FriendsModel]?) -> ()) {
         
         let method = "/friends.get"
         
@@ -41,7 +41,7 @@ final class FriendsAPI {
                 let response = object["response"] as! [String: Any]
                 let items = response["items"] as! [Any]
                 
-                let friends = items.map{FriendsDB(item: $0 as! [String: Any])}
+                let friends = items.map{FriendsModel(item: $0 as! [String: Any])}
                
                 complition(friends)
                 

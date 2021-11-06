@@ -6,20 +6,22 @@
 //
 
 import UIKit
+import  RealmSwift
 
 class CommunitiesController: UITableViewController {
     
-    let communitiesService = CommunitiesAPI()
-    var groups: [GroupDB] = []
+    private let groupsAPI = GroupsAPI()
+    private var groupsDB = GroupsDB()
+    private var groups: Results<GroupModel>?
+    private var token: NotificationToken?
     
     override func viewDidLoad() {
         super.viewDidLoad()
- //       self.navigationItem.title = "Мои Сообщества"
-//        self.navigationController?.navigationBar.prefersLargeTitles = true
         
-        communitiesService.getGroups { [weak self] groups in
+        groupsAPI.getGroups { [weak self] groups in
             guard let self = self else { return }
-            self.groups = groups
+            self.groupsDB.save(groups)
+            self.groups = self.groupsDB.load()
             self.tableView.reloadData()
         }
     }
@@ -28,30 +30,38 @@ class CommunitiesController: UITableViewController {
         super.didReceiveMemoryWarning()
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard  let groups = groups else { return 0 }
         return groups.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "community", for: indexPath) as! CommunitiesCell
-        let groups = groups[indexPath.row]
-        cell.textLabel?.text = groups.name
+        let groups = groups?[indexPath.row]
+        cell.textLabel?.text = groups?.name
         cell.textLabel?.textColor = .white
+        if let url = URL(string: groups?.photo50 ?? "") {
+            cell.imageView?.loadImageURL(url: url)
+        }
         return cell
-}
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     }
-  //  override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
- //       if editingStyle == .delete {
- //           groups.remove(at: indexPath.row)
- //           tableView.deleteRows(at: [indexPath], with: .automatic)
-  //      }
-      
-  //  }
-//}
+
+   /* override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            groups.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    
+}
+    
 class CommunitiesNavigationController: UINavigationController, UINavigationControllerDelegate {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         delegate = self
     }
+    
     func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         if operation == .push {
             return NavigationPushAnimator()
@@ -59,6 +69,6 @@ class CommunitiesNavigationController: UINavigationController, UINavigationContr
             return NavigationPopAnimator()
         }
         return nil
-    }
+    }*/
 }
-}
+

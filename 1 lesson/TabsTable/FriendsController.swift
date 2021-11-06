@@ -6,26 +6,27 @@
 //
 
 import UIKit
+import RealmSwift
 
 class FriendsController: UITableViewController {
 
-    let friendsService = FriendsAPI()
-    var friends: [FriendsDB] = []
+    private let friendsAPI = FriendsAPI()
+    private let friendsDB = FriendsDB()
+    private var friends: Results<FriendsModel>?
+    private var token: NotificationToken?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "Мои Друзья"
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
         
-        friendsService.getFriends { [weak self] friends in
+        friendsAPI.getFriends { [weak self] friends in
             guard let self = self else { return }
-            self.friends = friends ?? []
+            self.friendsDB.save(friends ?? [])
+            self.friends = self.friendsDB.load()
             self.tableView.reloadData()
         }
     }
 
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+/*    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 40))
         headerView.backgroundColor = .darkGray
         let gradient = CAGradientLayer()
@@ -39,9 +40,9 @@ class FriendsController: UITableViewController {
         return headerView
         }
         
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-            return 40
-        }
+      override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+        }  */
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -52,31 +53,33 @@ class FriendsController: UITableViewController {
 //    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard  let friends = friends else { return 0 }
         return friends.count
   
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "friend", for: indexPath) as! FriendsCell
-        let friend = friends[indexPath.row]
-        cell.textLabel?.text = friend.fullName
+        let friend = friends?[indexPath.row]
+        cell.textLabel?.text = friend?.fullName
         cell.textLabel?.textColor = .white
+        if let url = URL(string: friend?.photo100 ?? "") {
+            cell.imageView?.loadImageURL(url: url)
+        }
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let friend = friends[indexPath.row]
+        let friend = friends![indexPath.row]
         let storyboard = UIStoryboard(name: "PhotoCollection", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "PhotoCollectionController")
-        let photoVC = PhotoCollectionController()
-        photoVC.friendID = String(friend.id)
-        photoVC.loadPhoto(friendID: String(friend.id))
+        let vc = storyboard.instantiateViewController(withIdentifier: "PhotoCollectionController") as! PhotoCollectionController
+        let friendID = String(friend.id)
+        vc.loadPhoto(friendID: friendID)
         self.navigationController?.pushViewController(vc, animated: true)
-        
-}
+    }
 }
 
-final class NavigationPushAnimator: NSObject, UIViewControllerAnimatedTransitioning {
+/*final class NavigationPushAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
@@ -192,4 +195,4 @@ class FriendsNavigationController: UINavigationController, UINavigationControlle
         }
         return nil
     }
-}
+}*/

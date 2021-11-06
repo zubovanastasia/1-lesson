@@ -7,31 +7,31 @@
 
 import Foundation
 import RealmSwift
-import SwiftUI
-
+import Realm
 
 // MARK: - Photo
-class PhotoResponse: Object, Codable {
-    @objc dynamic var response: Response
+struct PhotoResponse: Codable {
+    var response: Response
 }
 
 // MARK: - Response
-class Response: Object, Codable {
+class Response: Codable {
     @objc dynamic var count: Int
-    @objc dynamic var items: [PhotoDB]
+    var items: [PhotoModel]
 }
 
 // MARK: - Photo
-class PhotoDB: Object, Codable {
+class PhotoModel: Object, Codable {
     @objc dynamic var albumID: Int
-    @objc dynamic var reposts: Reposts
+    var reposts: Reposts
     @objc dynamic var postID, id, date: Int
     @objc dynamic var text: String
-    @objc dynamic var sizes: [Size]
-    @objc dynamic var hasTags: Bool
+    var sizes: [Size]
+    var hasTags: Bool
     @objc dynamic var ownerID: Int
-    @objc dynamic var likes: Likes
-    
+    var likes: Likes
+
+    }
     enum CodingKeys: String, CodingKey {
         case albumID = "album_id"
         case reposts
@@ -40,12 +40,12 @@ class PhotoDB: Object, Codable {
         case hasTags = "has_tags"
         case ownerID = "owner_id"
         case likes
+        
     }
-}
 
 // MARK: - Likes
-class Likes: Object, Codable {
-    @objc dynamic var userLikes, count: Int
+struct Likes: Codable {
+    var userLikes, count: Int
 
     enum CodingKeys: String, CodingKey {
         case userLikes = "user_likes"
@@ -54,13 +54,13 @@ class Likes: Object, Codable {
 }
 
 // MARK: - Reposts
-class Reposts: Object, Codable {
-    @objc dynamic var count: Int
+struct Reposts: Codable {
+    var count: Int
 }
 
 // MARK: - Size
-class Size: Object, Codable {
-    @objc dynamic var width, height: Int
-    @objc dynamic var url: String
-    @objc dynamic var type: String
+struct Size: Codable {
+    var width, height: Int
+    var url: String
+    var type: String
 }

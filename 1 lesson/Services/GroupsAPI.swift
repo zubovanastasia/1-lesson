@@ -8,14 +8,14 @@
 import Foundation
 import Alamofire
 
-final class CommunitiesAPI {
+final class GroupsAPI {
     
     let baseURL = "https://api.vk.com/method"
     let token = Session.shared.token
     let userId = Session.shared.userId
     let version = "5.81"
 
-    func getGroups(complition: @escaping([GroupDB]) -> ()) {
+    func getGroups(complition: @escaping([GroupModel]) -> ()) {
         
         let method = "/groups.get"
         
@@ -39,7 +39,7 @@ final class CommunitiesAPI {
                 let response = object["response"] as! [String: Any]
                 let items = response["items"] as! [Any]
                 
-                let groups = items.map{GroupDB(item: $0 as! [String: Any])}
+                let groups = items.map{GroupModel(item: $0 as! [String: Any])}
                 complition(groups)
                 
             } catch {

@@ -8,7 +8,9 @@
 import Foundation
 import RealmSwift
 
-class FriendsDB: Object {
+
+
+class FriendsModel: Object {
     @objc dynamic var id: Int = 0
     @objc dynamic var firstName: String?
     @objc dynamic var lastName: String?
