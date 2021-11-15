@@ -7,9 +7,13 @@
 
 import UIKit
 import WebKit
+import Firebase
 
 class VkApiAuthViewController: UIViewController, WKNavigationDelegate {
-
+    
+    private var usersID = [Session]()
+    private let ref = Database.database().reference(withPath: "usersID")
+    
     @IBOutlet weak var webview: WKWebView!{
         didSet{
             webview.navigationDelegate = self
@@ -18,7 +22,6 @@ class VkApiAuthViewController: UIViewController, WKNavigationDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
       autorizeToVkApi()
     }
     
@@ -34,7 +37,7 @@ class VkApiAuthViewController: UIViewController, WKNavigationDelegate {
             URLQueryItem(name: "scope", value: "262150"),
             URLQueryItem(name: "response_type", value: "token"),
             URLQueryItem(name: "revoke", value: "1"),
-            URLQueryItem(name: "v", value: "5.68")
+            URLQueryItem(name: "v", value: "5.81")
         ]
         
         let request = URLRequest(url: urlComponents.url!)
@@ -61,7 +64,12 @@ class VkApiAuthViewController: UIViewController, WKNavigationDelegate {
                 return dict
             }
         
-        guard let token = params["access_token"], let userId = params["user_id"] else { return}
+        guard let token = params["access_token"],
+              let userId = params["user_id"] else { return}
+        
+        let usersID = Session(userId: userId)
+        let userContainerRef = self.ref.child(userId)
+        userContainerRef.setValue(usersID.toAnyObject())
         
         print(token)
         
@@ -74,3 +82,5 @@ class VkApiAuthViewController: UIViewController, WKNavigationDelegate {
     }
 
 }
+
+//7822904
