@@ -7,32 +7,44 @@
 
 import UIKit
 
-class NewsController: UIViewController {
+class NewsController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var image = ["168724", "168723", "168726", "168727", "168730" ]
+    let newsAPI = NewsAPI()
+    var news: [NewsItem] = []
     
-    @IBOutlet private weak var table: UITableView!
+    @IBOutlet weak var table: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "Новости"
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        newsAPI.getNewsUser { [weak self] news in
+            guard let self = self else { return }
+            self.news = news ?? []
+            self.table.reloadData()
+        }
     }
-}
-
-extension NewsController: UITableViewDataSource {
     
+    override func didReceiveMemoryWarning() {
+             super.didReceiveMemoryWarning()
+         }
+
+ 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        news.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "news", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "news", for: indexPath) as! NewsCell
+        let news = news[indexPath.row]
+        cell.lebelDate?.text = String(news.date)
+        cell.lebelDate.textColor = .white
+        cell.textText.text = news.text
+        cell.textText.textColor = .white
+        cell.lebelName.text = String(news.postID)
+        cell.lebelName.textColor = .white
         return cell
     }
-}
-extension NewsController: UITableViewDelegate {
+
+
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
 
@@ -40,5 +52,5 @@ extension NewsController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     }
-}
 
+}
