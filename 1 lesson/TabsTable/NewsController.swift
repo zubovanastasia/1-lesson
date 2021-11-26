@@ -36,12 +36,15 @@ class NewsController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cell = tableView.dequeueReusableCell(withIdentifier: "news", for: indexPath) as! NewsCell
         let news = news[indexPath.row]
         cell.lebelDate?.text = String(news.date)
-        cell.lebelDate.textColor = .white
-        cell.textText.text = news.text
-        cell.textText.textColor = .white
-        cell.lebelName.text = String(news.postID)
-        cell.lebelName.textColor = .white
+        cell.lebelDate?.textColor = .white
+        cell.textText?.text = news.text
+        cell.textText?.textColor = .white
+        cell.lebelName?.text = String(news.postID)
+        cell.lebelName?.textColor = .white
         return cell
+        let cell2 = tableView.dequeueReusableCell(withIdentifier: "cell2", for: indexPath) as! NewsCell2
+        cell2.textLabel?.text = news.text
+        
     }
 
 

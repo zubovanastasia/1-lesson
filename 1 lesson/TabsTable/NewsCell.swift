@@ -19,6 +19,7 @@ class NewsCell: UITableViewCell {
     @IBOutlet weak var lebelLike: UILabel!
     
     override func awakeFromNib() {
+        super.awakeFromNib()
    /*     self.imageAva.image = UIImage(named: "1")
         self.lebelName.text = "Искусство"
         self.lebelDate.text = "Вчера в 11:42"

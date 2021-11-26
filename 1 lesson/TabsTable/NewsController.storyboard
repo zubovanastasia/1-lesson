@@ -170,6 +170,38 @@
                                             <outlet property="textText" destination="C97-7y-AIq" id="y00-BA-X2A"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cell2" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="uxr-kj-ESE" customClass="NewsCell2" customModule="__lesson" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="729.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uxr-kj-ESE" id="2X0-L0-ZGR">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cell3" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="HZU-4V-Bpd" customClass="NewsCell3" customModule="__lesson" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="773" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HZU-4V-Bpd" id="o2q-cZ-pAa">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cell4" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="eN2-mw-uUv" customClass="NewsCell4" customModule="__lesson" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="816.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eN2-mw-uUv" id="Rf6-eV-G4l">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cell5" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Z8Q-vZ-TzK" customClass="NewsCell5" customModule="__lesson" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="860" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Z8Q-vZ-TzK" id="eIF-J2-CL9">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="Y6W-OH-hqX" id="yUc-YP-9U4"/>
