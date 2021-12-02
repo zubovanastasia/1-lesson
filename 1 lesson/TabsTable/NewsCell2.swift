@@ -10,6 +10,8 @@ import UIKit
 
 class NewsCell2: UITableViewCell{
     
+    @IBOutlet weak var textPost: UITextView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()}
 }
