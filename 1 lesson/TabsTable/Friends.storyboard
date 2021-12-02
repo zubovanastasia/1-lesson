@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Erd-GN-LH0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Erd-GN-LH0">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -35,28 +35,27 @@
                                     <bool key="isElement" value="YES"/>
                                 </accessibility>
                                 <connections>
-                                    <segue destination="xnE-7y-iHt" kind="show" id="Pag-LF-Hvf"/>
+                                    <segue destination="gWy-U5-nDZ" kind="show" id="atP-Uo-CYX"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
                     </tableView>
+                    <navigationItem key="navigationItem" id="vd2-Zf-bec"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fop-l2-baH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-304.34782608695656" y="45.535714285714285"/>
+            <point key="canvasLocation" x="451" y="46"/>
         </scene>
         <!--PhotoCollection-->
-        <scene sceneID="X52-kV-PbN">
+        <scene sceneID="sFs-2h-d4t">
             <objects>
-                <viewControllerPlaceholder storyboardName="PhotoCollection" id="xnE-7y-iHt" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" title="Фотографии" largeTitleDisplayMode="always" id="tSg-a7-nHm">
-                        <barButtonItem key="backBarButtonItem" title="Друзья" id="oOf-TJ-EJc"/>
-                    </navigationItem>
+                <viewControllerPlaceholder storyboardName="PhotoCollection" id="gWy-U5-nDZ" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="G6f-29-BaT"/>
                 </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sTa-9G-7Gk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l04-iy-CB7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-305" y="402"/>
+            <point key="canvasLocation" x="988" y="46"/>
         </scene>
     </scenes>
 </document>

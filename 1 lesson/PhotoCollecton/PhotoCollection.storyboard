@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="84Q-bL-r15">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="84Q-bL-r15">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -10,35 +10,42 @@
         <!--Photo Collection Controller-->
         <scene sceneID="UeA-Lc-gNW">
             <objects>
-                <collectionViewController id="84Q-bL-r15" customClass="PhotoCollectionController" customModule="__lesson" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="QXm-RM-m9r">
+                <collectionViewController storyboardIdentifier="PhotoCollectionController" id="84Q-bL-r15" customClass="PhotoCollectionController" customModule="__lesson" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" prefetchingEnabled="NO" id="QXm-RM-m9r">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="t4l-vW-aWv">
-                            <size key="itemSize" width="150" height="150"/>
-                            <size key="estimatedItemSize" width="150" height="150"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lfp-5N-cG6">
+                            <size key="itemSize" width="128" height="128"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="photo" id="1gV-Qn-8TI" customClass="PhotoCollectionCell" customModule="__lesson" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="photo" reuseIdentifier="photoCell" id="1gV-Qn-8TI" customClass="PhotoCollectionCell" customModule="__lesson" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="images" insetsLayoutMarginsFromSafeArea="NO" id="FcA-ab-ENs">
-                                    <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="photos" translatesAutoresizingMaskIntoConstraints="NO" id="dC3-b4-uu6">
-                                            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="150" verticalHuggingPriority="150" horizontalCompressionResistancePriority="150" verticalCompressionResistancePriority="150" restorationIdentifier="photos" translatesAutoresizingMaskIntoConstraints="NO" id="dC3-b4-uu6">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                         </imageView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="dC3-b4-uu6" firstAttribute="top" secondItem="FcA-ab-ENs" secondAttribute="top" id="0Dp-2B-SXm"/>
                                         <constraint firstAttribute="trailing" secondItem="dC3-b4-uu6" secondAttribute="trailing" id="8Yh-98-GZQ"/>
                                         <constraint firstItem="dC3-b4-uu6" firstAttribute="top" secondItem="FcA-ab-ENs" secondAttribute="top" id="90x-11-klF"/>
+                                        <constraint firstItem="dC3-b4-uu6" firstAttribute="leading" secondItem="FcA-ab-ENs" secondAttribute="leading" id="FPo-oZ-S9W"/>
+                                        <constraint firstItem="dC3-b4-uu6" firstAttribute="top" secondItem="FcA-ab-ENs" secondAttribute="top" id="Idu-zA-rgI"/>
+                                        <constraint firstAttribute="trailing" secondItem="dC3-b4-uu6" secondAttribute="trailing" id="MxR-Ls-M2b"/>
                                         <constraint firstAttribute="bottom" secondItem="dC3-b4-uu6" secondAttribute="bottom" id="QkZ-za-8xl"/>
+                                        <constraint firstItem="dC3-b4-uu6" firstAttribute="leading" secondItem="FcA-ab-ENs" secondAttribute="leading" id="RbW-6W-Fix"/>
+                                        <constraint firstAttribute="trailing" secondItem="dC3-b4-uu6" secondAttribute="trailing" id="XVg-CS-WBQ"/>
+                                        <constraint firstAttribute="bottom" secondItem="dC3-b4-uu6" secondAttribute="bottom" id="hLU-8N-6qR"/>
+                                        <constraint firstAttribute="bottom" secondItem="dC3-b4-uu6" secondAttribute="bottom" id="nfz-9C-B1w"/>
                                         <constraint firstItem="dC3-b4-uu6" firstAttribute="leading" secondItem="FcA-ab-ENs" secondAttribute="leading" id="sEa-sJ-91p"/>
                                     </constraints>
                                 </collectionViewCellContentView>
@@ -49,7 +56,6 @@
                         </cells>
                         <connections>
                             <outlet property="dataSource" destination="84Q-bL-r15" id="p4n-bN-YdS"/>
-                            <outlet property="delegate" destination="84Q-bL-r15" id="P8Z-Dl-gjq"/>
                         </connections>
                     </collectionView>
                 </collectionViewController>

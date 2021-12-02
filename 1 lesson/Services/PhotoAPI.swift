@@ -21,7 +21,7 @@ final class PhotoAPI: UIImageView {
         let method = "/photos.getAll"
         
         let parameters: Parameters = [
-            "owner_id": userId,
+            "owner_id": friendID,
             "access_token": token,
             "v": version,
             "no_service_albums": 0,

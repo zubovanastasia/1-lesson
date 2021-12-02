@@ -7,6 +7,8 @@
 
 import UIKit
 import RealmSwift
+import FirebaseDatabase
+import FirebaseAuth
 
 class FriendsController: UITableViewController {
 
@@ -75,13 +77,17 @@ class FriendsController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "friend", for: indexPath) as! FriendsCell
-        let friend = friends?[indexPath.row]
-        cell.textLabel?.text = friend?.fullName
+        let friend = friends![indexPath.row]
+        cell.textLabel?.text = friend.fullName
         cell.textLabel?.textColor = .white
-        if let url = URL(string: friend?.photo100 ?? "") {
+        if let url = URL(string: friend.photo100 ?? "") {
             cell.imageView?.loadImageURL(url: url)
         }
         return cell
+        /*guard let cell = tableView.dequeueReusableCell(withIdentifier: "friend", for: indexPath) as? FriendsCell else { return UITableViewCell() }
+            let friend = friends?[indexPath.row]
+            cell.textLabel?.text = friend?.fullName
+            return cell*/
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -92,7 +98,14 @@ class FriendsController: UITableViewController {
         vc.loadPhoto(friendID: friendID)
         self.navigationController?.pushViewController(vc, animated: true)
     }
-}
+    
+ /*   override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let friend = friends?[indexPath.row]
+            friend.ref?.removeValue()
+        }*/
+    }
+
 
 /*final class NavigationPushAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     

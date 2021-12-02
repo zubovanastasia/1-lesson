@@ -10,7 +10,7 @@ import UIKit
 class NewsController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let newsAPI = NewsAPI()
-    var news: [NewsItem] = []
+    var news: [NewsModel] = []
     
     @IBOutlet weak var table: UITableView!
     
@@ -18,7 +18,7 @@ class NewsController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
         newsAPI.getNewsUser { [weak self] news in
             guard let self = self else { return }
-            self.news = news ?? []
+            self.news = news
             self.table.reloadData()
         }
     }
@@ -33,18 +33,13 @@ class NewsController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "news", for: indexPath) as! NewsCell
+        let cell1 = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as! NewsCell
         let news = news[indexPath.row]
-        cell.lebelDate?.text = String(news.date)
-        cell.lebelDate?.textColor = .white
-        cell.textText?.text = news.text
-        cell.textText?.textColor = .white
-        cell.lebelName?.text = String(news.postID)
-        cell.lebelName?.textColor = .white
-        return cell
+        cell1.lebelDate.text = String(news.date)
+        return cell1
         let cell2 = tableView.dequeueReusableCell(withIdentifier: "cell2", for: indexPath) as! NewsCell2
-        cell2.textLabel?.text = news.text
-        
+        cell2.textPost.text = news.text
+        return cell2
     }
 
 

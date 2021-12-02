@@ -14,8 +14,6 @@ class NewsCell: UITableViewCell {
     @IBOutlet weak var imageAva: UIImageView!
     @IBOutlet weak var lebelName: UILabel!
     @IBOutlet weak var lebelDate: UILabel!
-    @IBOutlet weak var textText: UITextView!
-    @IBOutlet weak var imageContent: UIImageView!
     @IBOutlet weak var lebelLike: UILabel!
     
     override func awakeFromNib() {

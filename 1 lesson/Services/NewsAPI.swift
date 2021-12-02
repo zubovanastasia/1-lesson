@@ -7,7 +7,8 @@
 
 import Foundation
 import Alamofire
-
+import SwiftyJSON
+    
 final class NewsAPI {
     
     let baseURL = "https://api.vk.com/method"
@@ -16,7 +17,7 @@ final class NewsAPI {
     let version = "5.81"
     let scope = ["friends", "photos", "audio", "video", "wall", "groups"]
     
-    func getNewsUser(complition: @escaping([NewsItem]?) -> ()) {
+    func getNewsUser(complition: @escaping(NewsModel?) -> ()) {
         
         let method = "/newsfeed.get"
         
@@ -35,19 +36,59 @@ final class NewsAPI {
         
         AF.request(url, method: .get, parameters: parameters).responseJSON { response in
             
-           guard let data = response.data else { return }
+            guard let data = response.data else { return }
             
-            debugPrint(response.data?.prettyJSON as Any)
-               
-               do {
-                   let newsResponse = try? JSONDecoder().decode(NewsModel.self, from: data)
-                   let news = newsResponse?.response.items
-           
-                   complition(news)
-                   
-               } catch {
-                   print(error)
-           }
+            let decoder = JSONDecoder()
+            let json = JSON(data)
+            let dispatchGroup = DispatchGroup()
+            
+            let vkItemsJSONArr = json["response"]["items"].arrayValue
+            let vkProfilesJSONArr = json["response"]["profiles"].arrayValue
+            let vkGroupsJSONArr = json["response"]["groups"].arrayValue
+            
+            var vkItemsArr: [NewsItem] = []
+            var vkProfilesArr: [Profile] = []
+            var vkGroupsArr: [Group] = []
+            
+            DispatchQueue.global().async (group: dispatchGroup) {
+                for (index, items) in vkItemsJSONArr.enumerated() {
+                    do {
+                        let decodedItem = try decoder.decode(NewsItem.self, from: items.rawData())
+                        vkItemsArr.append(decodedItem)
+                    } catch (let errorDecode) {
+                        print("Item decoding error at index \(index), error: \(errorDecode)")
+                    }
+                }
+            }
+            
+            DispatchQueue.global().async (group: dispatchGroup) {
+                for (index, profiles) in vkProfilesJSONArr.enumerated() {
+                    do {
+                        let decodedItem = try decoder.decode(Profile.self, from: profiles.rawData())
+                        vkProfilesArr.append(decodedItem)
+                    } catch (let errorDecode) {
+                        print("Item decoding error at index \(index), error: \(errorDecode)")
+                    }
+                }
+            }
+            
+            DispatchQueue.global().async (group: dispatchGroup) {
+                for (index, groups) in vkGroupsJSONArr.enumerated() {
+                    do {
+                        let decodedItem = try decoder.decode(Group.self, from: groups.rawData())
+                        vkGroupsArr.append(decodedItem)
+                    } catch (let errorDecode) {
+                        print("Item decoding error at index \(index), error: \(errorDecode)")
+                    }
+                }
+            }
+            
+            dispatchGroup.notify(queue: DispatchQueue.main) {
+                let newsResponse = NewsResponse(items: vkItemsArr, groups: vkGroupsArr, profiles: vkProfilesArr, nextFrom: "next_from")
+                let news = NewsModel(response: newsResponse)
+                
+                complition(news)
+            }
             
         }
     }

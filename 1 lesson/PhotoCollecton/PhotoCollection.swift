@@ -27,18 +27,18 @@ class PhotoCollectionController: UICollectionViewController, UICollectionViewDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let layout = UICollectionViewFlowLayout()
+            /* let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 100, height: 100)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         self.view.addSubview(collectionView)
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "photo")
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "photo")*/
     }
     
-    override func didReceiveMemoryWarning() {
+  /*  override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
+    }*/
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard  let photos = photos else { return 0 }
@@ -46,14 +46,14 @@ class PhotoCollectionController: UICollectionViewController, UICollectionViewDel
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photo", for: indexPath) as! PhotoCollectionCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as! PhotoCollectionCell
         let photo = photos?[indexPath.row]
         guard let url = URL(string: photo?.sizes[0].url ?? "") else { return UICollectionViewCell()}
         cell.imagePhoto.loadImageURL(url: url)
         return cell
         }
     
-    /*  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt IndexPath: IndexPath) -> CGSize {
+      func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt IndexPath: IndexPath) -> CGSize {
         let height: CGFloat = 150
         let row: CGFloat = 3
         let inset: CGFloat = 5
@@ -67,5 +67,5 @@ class PhotoCollectionController: UICollectionViewController, UICollectionViewDel
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 5
-    } */
+    }
     }
