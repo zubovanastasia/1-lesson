@@ -7,6 +7,7 @@
 
 import Foundation
 import Alamofire
+import Firebase
 
 final class FriendsAPI {
     
