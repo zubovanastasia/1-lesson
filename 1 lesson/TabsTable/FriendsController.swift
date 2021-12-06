@@ -7,20 +7,32 @@
 
 import UIKit
 import RealmSwift
-import FirebaseDatabase
-import FirebaseAuth
+//import FirebaseDatabase
+//import FirebaseAuth
 
 class FriendsController: UITableViewController {
 
-    private let friendsAPI = FriendsAPI()
+    /*private let friendsAPI = FriendsAPI()
     private let friendsDB = FriendsDB()
     private var friends: Results<FriendsModel>?
-    private var token: NotificationToken?
+    private var token: NotificationToken? */
     
+    var friends: [FriendsModel] = []
+    let operationsQueue = OperationQueue()
+    let friendsDataOperation = FriendsDataOperation()
+    let friendsParsingOperation = FriendsParsingOperation()
+        
     override func viewDidLoad() {
         super.viewDidLoad()
+        let friendsDisplayOperation = FriendsDisplayOperation(controller: self)
+        self.operationsQueue.addOperation(friendsDataOperation)
+        self.friendsParsingOperation.addDependency(friendsDataOperation)
+        self.operationsQueue.addOperation(friendsParsingOperation)
+        friendsDisplayOperation.addDependency(friendsParsingOperation)
         
-        friendsAPI.getFriends { [weak self] friends in
+        OperationQueue.main.addOperation(friendsDisplayOperation)
+        
+    /*  friendsAPI.getFriends { [weak self] friends in
             guard let self = self else { return }
             self.friendsDB.save(friends ?? [])
             self.friends = self.friendsDB.load()
@@ -40,7 +52,7 @@ class FriendsController: UITableViewController {
                     fatalError("\(error)")
                 }
             }
-        }
+        } */
     }
 
 /*    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -70,14 +82,14 @@ class FriendsController: UITableViewController {
 //    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard  let friends = friends else { return 0 }
+     //   guard  let friends = friends else { return 0 }
         return friends.count
   
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "friend", for: indexPath) as! FriendsCell
-        let friend = friends![indexPath.row]
+        let friend = friends[indexPath.row]
         cell.textLabel?.text = friend.fullName
         cell.textLabel?.textColor = .white
         if let url = URL(string: friend.photo100 ?? "") {
@@ -91,7 +103,7 @@ class FriendsController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let friend = friends![indexPath.row]
+        let friend = friends[indexPath.row]
         let storyboard = UIStoryboard(name: "PhotoCollection", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "PhotoCollectionController") as! PhotoCollectionController
         let friendID = String(friend.id)
@@ -224,3 +236,4 @@ class FriendsNavigationController: UINavigationController, UINavigationControlle
         return nil
     }
 }*/
+
