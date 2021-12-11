@@ -7,6 +7,7 @@
 
 import UIKit
 import  RealmSwift
+import PromiseKit
 
 class CommunitiesController: UITableViewController {
     
@@ -18,7 +19,22 @@ class CommunitiesController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        groupsAPI.getGroups { [weak self] groups in
+        firstly {
+            groupsAPI.getGroups()
+        }.done { groups in
+           // guard let self = self else { return }
+            self.groupsAPI.getGroups()
+        }
+        .ensure {
+        }.done { groups in
+            print(groups)
+        }.catch { error in
+            print(error)
+        }
+    }
+
+
+   /*     groupsAPI.getGroups { [weak self] groups in
             guard let self = self else { return }
             self.groupsDB.save(groups)
             self.groups = self.groupsDB.load()
@@ -39,7 +55,7 @@ class CommunitiesController: UITableViewController {
                 }
             }
         }
-    }
+    } */
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -86,4 +102,5 @@ class CommunitiesNavigationController: UINavigationController, UINavigationContr
         return nil
     }*/
 }
+
 

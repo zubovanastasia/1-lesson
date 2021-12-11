@@ -7,6 +7,7 @@
 
 import Foundation
 import Alamofire
+import PromiseKit
 
 final class GroupsAPI {
     
@@ -14,36 +15,42 @@ final class GroupsAPI {
     let token = Session.shared.token
     let userId = Session.shared.userId
     let version = "5.81"
-
-    func getGroups(complition: @escaping([GroupModel]) -> ()) {
-        
-        let method = "/groups.get"
-        
-        let parameters: Parameters = [
-            "user_id": userId,
-            "access_token": token,
-            "v": version,
-            "extended": 1
-        ]
-        let url = baseURL + method
-        
-        AF.request(url, method: .get, parameters: parameters).responseJSON { response in
+    
+    func getGroups() -> Promise<[GroupModel]> {
+        return Promise<[GroupModel]> { resolver in
             
-            guard let data = response.data else { return }
+            let method = "/groups.get"
             
-            debugPrint(response.data?.prettyJSON as Any)
+            let parameters: Parameters = [
+                "user_id": userId,
+                "access_token": token,
+                "v": version,
+                "extended": 1
+            ]
+            let url = baseURL + method
             
-            do {
-                let jsonContainer: Any = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers)
-                let object = jsonContainer as! [String: Any]
-                let response = object["response"] as! [String: Any]
-                let items = response["items"] as! [Any]
+            AF.request(url, method: .get, parameters: parameters).responseJSON { response in
                 
-                let groups = items.map{GroupModel(item: $0 as! [String: Any])}
-                complition(groups)
-                
-            } catch {
-                print(error)
+                if let error = response.error {
+                    resolver.reject(error)
+                }
+                if let data = response.data {
+                    
+                    debugPrint(response.data?.prettyJSON as Any)
+                    
+                    do {
+                        let jsonContainer: Any = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+                        let object = jsonContainer as! [String: Any]
+                        let response = object["response"] as! [String: Any]
+                        let items = response["items"] as! [Any]
+                        
+                        let groups = items.map{GroupModel(item: $0 as! [String: Any])}
+                        resolver.fulfill(groups)
+                        
+                    } catch {
+                        print(error)
+                    }
+                }
             }
         }
     }
