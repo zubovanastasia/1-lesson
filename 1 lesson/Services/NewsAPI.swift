@@ -17,11 +17,11 @@ final class NewsAPI {
     let version = "5.81"
     let scope = ["friends", "photos", "audio", "video", "wall", "groups"]
     
-    func getNewsUser(complition: @escaping(NewsModel?) -> ()) {
+    func getNewsUser(startTime: Double? = nil, startFrom: String? = "", _ complition: @escaping (NewsModel?) -> ()) {
         
         let method = "/newsfeed.get"
         
-        let parameters: Parameters = [
+        var parameters: Parameters = [
             "userId": userId,
             "filters": "post, wall_photo, audio, video",
             "return_banned": 0,
@@ -29,11 +29,20 @@ final class NewsAPI {
             "count": 10,
             "access_token": token,
             "v": version,
-            "scope": scope
+            "scope": scope,
+            "start_from": startFrom,
+            "start_time": startTime
         ]
         
-        let url = baseURL + method
+        if let startTime = startTime {
+            parameters["start_time"] = startTime
+               }
+        if let startFrom = startFrom {
+                   parameters["start_from"] = startFrom
+               }
         
+        let url = baseURL + method
+
         AF.request(url, method: .get, parameters: parameters).responseJSON { response in
             
             guard let data = response.data else { return }
@@ -45,6 +54,7 @@ final class NewsAPI {
             let vkItemsJSONArr = json["response"]["items"].arrayValue
             let vkProfilesJSONArr = json["response"]["profiles"].arrayValue
             let vkGroupsJSONArr = json["response"]["groups"].arrayValue
+            let nextFrom = json["response"]["next_from"].stringValue
             
             var vkItemsArr: [NewsItem] = []
             var vkProfilesArr: [Profile] = []
@@ -84,7 +94,10 @@ final class NewsAPI {
             }
             
             dispatchGroup.notify(queue: DispatchQueue.main) {
-                let newsResponse = NewsResponse(items: vkItemsArr, groups: vkGroupsArr, profiles: vkProfilesArr, nextFrom: "next_from")
+                let newsResponse = NewsResponse(items: vkItemsArr,
+                                                profiles: vkProfilesArr,
+                                                groups: vkGroupsArr,
+                                                nextFrom: nextFrom)
                 let news = NewsModel(response: newsResponse)
                 
                 complition(news)

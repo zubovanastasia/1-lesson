@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import  RealmSwift
+import RealmSwift
 import PromiseKit
 
 class CommunitiesController: UITableViewController {
@@ -22,7 +22,6 @@ class CommunitiesController: UITableViewController {
         firstly {
             groupsAPI.getGroups()
         }.done { groups in
-           // guard let self = self else { return }
             self.groupsAPI.getGroups()
         }
         .ensure {
@@ -32,30 +31,6 @@ class CommunitiesController: UITableViewController {
             print(error)
         }
     }
-
-
-   /*     groupsAPI.getGroups { [weak self] groups in
-            guard let self = self else { return }
-            self.groupsDB.save(groups)
-            self.groups = self.groupsDB.load()
-            self.tableView.reloadData()
-            self.token = self.groups?.observe { [weak self] changes in
-                guard let self = self else { return }
-                switch changes {
-                case .initial:
-                    self.tableView.reloadData()
-                case .update(_, let deletions, let insertions, let modifications):
-                    self.tableView.beginUpdates()
-                    self.tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 0) }), with: .automatic)
-                    self.tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 0)}), with: .automatic)
-                    self.tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0) }), with: .automatic)
-                    self.tableView.endUpdates()
-                case .error(let error):
-                    fatalError("\(error)")
-                }
-            }
-        }
-    } */
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
