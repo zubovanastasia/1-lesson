@@ -6,10 +6,15 @@
 //
 
 import Foundation
-
+import SwiftUI
+import SwiftyJSON
 // MARK: - NewsModel
 struct NewsModel: Codable {
     let response: NewsResponse
+    
+    init(response: NewsResponse) {
+        self.response = response
+    }
 }
 
 // MARK: - Response
@@ -22,6 +27,13 @@ struct NewsResponse: Codable {
     enum CodingKeys: String, CodingKey {
         case items, groups, profiles
         case nextFrom = "next_from"
+    }
+    
+    init(items: [NewsItem], profiles: [Profile], groups: [Group], nextFrom: String) {
+        self.items = items
+        self.profiles = profiles
+        self.groups = groups
+        self.nextFrom = nextFrom
     }
 }
 
@@ -58,7 +70,19 @@ struct NewsItem: Codable {
     let markedAsAds, postID: Int
     let postSource: PostSource
     let views: Views
-
+    
+    var hasText: Bool {
+        return self.text != nil && self.text != ""
+    }
+    
+    var hasPhoto: Bool {
+        return self.attachments[0].photo?.photoAvailable != nil
+    }
+    
+    var hasLink: Bool {
+        return self.attachments[0].link?.url != nil
+    }
+    
     enum CodingKeys: String, CodingKey {
         case comments
         case canSetCategory = "can_set_category"
@@ -79,7 +103,8 @@ struct NewsItem: Codable {
 // MARK: - Attachment
 struct Attachment: Codable {
     let type: String
-    let link: Link
+    let photo: PhotoModel?
+    let link: Link?
 }
 
 // MARK: - Link
@@ -104,7 +129,7 @@ struct NewsPhoto: Codable {
     let sizes: [NewsSize]
     let hasTags: Bool
     let ownerID: Int
-
+    
     enum CodingKeys: String, CodingKey {
         case albumID = "album_id"
         case id, date, text
@@ -119,7 +144,20 @@ struct NewsPhoto: Codable {
 struct NewsSize: Codable {
     let width, height: Int
     let url: String
-    let type: String
+    //let type: String
+    
+    var aspectRatio: CGFloat { return CGFloat(height)/CGFloat(width) }
+    
+    init?(json: JSON) {
+        guard let sizesArray = json["photo"]["sizes"].array,
+              let xSize = sizesArray.first(where: { $0["type"].stringValue == "x" }),
+              let url = String?(xSize["url"].stringValue) else { return nil }
+            
+        
+        self.width = xSize["width"].intValue
+        self.height = xSize["height"].intValue
+        self.url = url
+    }
 }
 
 // MARK: - Comments
