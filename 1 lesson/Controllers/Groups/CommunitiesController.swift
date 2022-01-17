@@ -11,40 +11,47 @@ import PromiseKit
 
 class CommunitiesController: UITableViewController {
     
-    private let groupsAPI = GroupsAPI()
+  //  private let groupsAPI = GroupsAPI()
+    private var groupsAPI = GroupsAPIAdapter()
     private var groupsDB = GroupsDB()
-    private var groups: Results<GroupModel>?
+  //  private var groups: Results<GroupModel>?
+    private var groups: [GroupModelAdapter] = []
     private var token: NotificationToken?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        firstly {
+        groupsAPI.getGroupsAdapter(inId: id) { [weak self] groups in
+                self?.groups = groups
+                self?.tableView.reloadData()
+            }
+        }
+
+       /* firstly {
             groupsAPI.getGroups()
         }.done { groups in
-            self.groupsAPI.getGroups()
-        }
-        .ensure {
+         self.groupsAPI.getGroups()
+    //    }
+    //    .ensure {
         }.done { groups in
             print(groups)
         }.catch { error in
             print(error)
-        }
-    }
+        }*/
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard  let groups = groups else { return 0 }
+    //    guard  let groups = groups else { return 0 }
         return groups.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "community", for: indexPath) as! CommunitiesCell
-        let groups = groups?[indexPath.row]
-        cell.textLabel?.text = groups?.name
+        let groups = groups[indexPath.row]
+        cell.textLabel?.text = groups.name
         cell.textLabel?.textColor = .white
-        if let url = URL(string: groups?.photo50 ?? "") {
+        if let url = URL(string: groups.photo50 ?? "") {
             cell.imageView?.loadImageURL(url: url)
         }
         return cell

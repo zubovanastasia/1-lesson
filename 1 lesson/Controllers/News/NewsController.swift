@@ -34,6 +34,7 @@ class NewsController: UITableViewController {
         setupRefreshControl()
         
         newsAPI.getNewsUser { [weak self] news in
+            
             guard let self = self else { return }
             
             self.newsItem = news!.response.items
@@ -61,21 +62,19 @@ class NewsController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       // let currentNewsItem = newsItem[indexPath.section]
-        
+        let currentNewsItem = newsItem[indexPath.section]
+
         switch indexPath.row {
-        case 0: return self.tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as! NewsCell
-        case 1: return self.tableView.dequeueReusableCell(withIdentifier: "cell2", for: indexPath) as! NewsCell2
-        case 2: return self.tableView.dequeueReusableCell(withIdentifier: "cell3", for: indexPath) as! NewsCell3
-        case 3: return self.tableView.dequeueReusableCell(withIdentifier: "cell4", for: indexPath) as! NewsCell4
+        case 0: return newsInfoCell(indexPath: indexPath)
+        case 1: return currentNewsItem.hasText ? newsTextCell(indexPath: indexPath) : newsPhotoCell(indexPath: indexPath)
+       // case 2: currentNewsItem.hasLink
         default:
             debugPrint("No cell")
-            
-            return self.tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath)
+            return UITableViewCell()
         }
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+   /* override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.row {
         case 2:
             let tableWidth = tableView.bounds.width
@@ -85,7 +84,7 @@ class NewsController: UITableViewController {
         default:
             return UITableView.automaticDimension
         }
-    }
+    }*/
     
     @objc func refreshNews(sender: AnyObject) {
         self.refreshControl?.beginRefreshing()
@@ -109,15 +108,33 @@ class NewsController: UITableViewController {
             self.tableView.insertSections(indexSet, with: .fade)
         }
     }
+    func newsInfoCell(indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as! NewsCell
+        cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: .greatestFiniteMagnitude)
+        let currentNewsItem = newsItem[indexPath.section]
+        switch newsItem[indexPath.section].sourceID.signum() {
+        case 1:
+            let currentNewsItemProfile = newsProfiles.filter{ $0.id == currentNewsItem.sourceID }[0]
+            cell.configure(profile: currentNewsItemProfile, postDate: currentNewsItem.date)
+        case -1:
+            let currentNewsItemGroup = newsGroups.filter{ $0.id == abs(currentNewsItem.sourceID) }[0]
+            cell.configure(group: currentNewsItemGroup, postDate: currentNewsItem.date)
+            
+        default: break
+        }
+        
+        return cell
+    }
     
     func newsTextCell(indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "сell2", for: indexPath) as! NewsCell2
         cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: .greatestFiniteMagnitude)
         let currentNewsItem = newsItem[indexPath.section]
-        //if currentFeedItem.hasText {
-        cell.configureNewsText(newsText: currentNewsItem.text )
+        if currentNewsItem.hasText {
+        cell.configure(newsText: currentNewsItem.text )
         return cell
-        // } else { return UITableViewCell() }
+         } else { return UITableViewCell() }
     }
     
     func newsPhotoCell(indexPath: IndexPath) -> UITableViewCell {
@@ -133,8 +150,20 @@ class NewsController: UITableViewController {
             
         }
     }
+    
+  /*  func newsLinkCell(indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell4", for: indexPath) as! NewsCell4
+        cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: .greatestFiniteMagnitude)
+        let currentNewsItem = newsItem[indexPath.section]
+       // if currentNewsItem.hasLink {
+        //    cell.configure(link: currentNewsItem.attachments![0].link!)
+        cell.likeValueLebel = currentNewsItem.likes
+        }
+            return cell
+            
+     //   } else { return UITableViewCell() }
+    } */
 }
-
 extension NewsController: UITableViewDataSourcePrefetching {
     
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {

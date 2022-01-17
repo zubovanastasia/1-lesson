@@ -14,4 +14,9 @@ class PhotoCollectionCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
+
+    func configure(with viewModel: PhotoViewModel) {
+        
+        imagePhoto.loadImageURL(url: viewModel.photoUser!)
+    }
 }
