@@ -30,8 +30,8 @@ class PhotoModel: Object, Codable {
     var hasTags: Bool
     @objc dynamic var ownerID: Int
     var likes: Likes
-
-    }
+    var photoAvailable: Size?
+}
     enum CodingKeys: String, CodingKey {
         case albumID = "album_id"
         case reposts
