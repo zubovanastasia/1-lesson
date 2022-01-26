@@ -14,6 +14,7 @@ import Firebase
     var token: String = ""
     var userId: String = ""
     var ref: DatabaseReference?
+    var accessGranted = false
     
     init (userId: String) {
         self.ref = nil
