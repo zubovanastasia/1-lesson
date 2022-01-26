@@ -10,11 +10,11 @@ import RealmSwift
 
 class SearchCommunitiesController: UITableViewController, UISearchBarDelegate {
    
-    private let searchGroupsAPI = SearchCommunitiesAPI()
+    private let searchGroupsAPI = SearchGroupsAPI()
     private var searchGroupsDB = SearchGroupsDB()
     private var searchGroups: Results<SearchGroupModel>?
     private var token: NotificationToken?
-    
+   
  //   @IBOutlet private weak var searchBar: UISearchBar!
     
     override func viewDidLoad() {
@@ -41,6 +41,16 @@ class SearchCommunitiesController: UITableViewController, UISearchBarDelegate {
                 }
             }
         }
+        let proxy = SearchGroupsServiceProxyControl(searchGroupsService: searchGroupsAPI)
+        Session.shared.accessGranted = false
+        proxy.getSearchGroups { searchGroups in
+            debugPrint(searchGroups)
+        }
+
+        Session.shared.accessGranted = true
+        proxy.getSearchGroups { searchGroups in
+            debugPrint(searchGroups)
+    }
     }
     
     override func didReceiveMemoryWarning() {
